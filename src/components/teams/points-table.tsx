@@ -1,32 +1,8 @@
 import { Image } from "@unpic/react";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { fullteams, teams } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-
-const teams = [
-	"CSK",
-	"MI",
-	"RCB",
-	"KKR",
-	"SRH",
-	"DC",
-	"PBKS",
-	"RR",
-	"LSG",
-	"GT",
-];
-const fullteams = [
-	"Chennai Super Kings",
-	"Mumbai Indians",
-	"Royal Challengers Bangalore",
-	"Kolkata Knight Riders",
-	"Sunrisers Hyderabad",
-	"Delhi Capitals",
-	"Punjab SuperKings",
-	"Rajasthan Royals",
-	"Lucknow Super Giants",
-	"Gujarat Titans",
-];
 
 export function PointsTable() {
 	return (
@@ -284,13 +260,13 @@ function PointsCard({ val, className }: { val: string; className?: string }) {
 										["3", "0"].includes(val) ? "flex" : "hidden",
 									)}
 								>
-									<span className="size-5 rounded-full flex items-center justify-center bg-green-500 text-[9px] text-white font-semibold">
+									<span className="size-5 rounded-full flex items-center justify-center bg-success text-[9px] text-white font-semibold">
 										W
 									</span>
-									<span className="size-5 rounded-full flex items-center justify-center bg-green-500 text-[9px] text-white font-semibold">
+									<span className="size-5 rounded-full flex items-center justify-center bg-success text-[9px] text-white font-semibold">
 										W
 									</span>
-									<span className="size-5 rounded-full flex items-center justify-center bg-red-500 text-[9px] text-white font-semibold">
+									<span className="size-5 rounded-full flex items-center justify-center bg-destructive text-[9px] text-white font-semibold">
 										L
 									</span>
 									<span className="size-5 rounded-full flex items-center justify-center border border-black bg-muted text-[9px] text-foreground font-semibold">
