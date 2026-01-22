@@ -6,7 +6,8 @@ import { cn } from "@/lib/utils";
 
 export function PointsTable() {
 	return (
-		<div>
+		<div className="flex flex-col gap-6 w-full">
+			<span className="title">Points Table</span>
 			<Tabs defaultValue="1" className="md:hidden">
 				<TabsList>
 					<TabsTrigger value="1">Short</TabsTrigger>

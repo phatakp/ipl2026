@@ -127,9 +127,7 @@
   body {
     @apply font-sans bg-background text-foreground;
     }
-  /* html {
-    font-size: large;
-    } */
+  
   .ipl-logo::after {
     content: "";
     position: absolute;
@@ -141,5 +139,49 @@
     background-image: url('https://documents.iplt20.com/ipl/assets/images/rounded_spiral-header.png');
     }
 
-  
+     .title {
+        @apply from-primary/70 via-primary  to-black bg-linear-to-br  bg-clip-text text-4xl font-extrabold text-transparent;
+    }
+ }
+
+ /** Custom Scrollbar **/
+@layer base {
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--input);
+    border-radius: 5px;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--input) transparent;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 }
+ 
+/** Custom Container **/
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1440px) {
+    padding-inline: 2rem;
+    max-width: 1440px;
+  }
+}
+
+
+html {
+      scroll-snap-type: y proximity;
+      scroll-behavior: smooth;
+    }

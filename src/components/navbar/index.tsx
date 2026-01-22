@@ -18,24 +18,39 @@ export function Navbar() {
 				<Link to={"/"} className="w-20 h-full relative">
 					<Logo />
 				</Link>
-				<div className="flex-1 items-center justify-center gap-8 text-primary-foreground hidden md:flex">
+				<div className="flex-1 items-center justify-center gap-8 text-primary-foreground hidden md:flex ">
 					<Link to={"/"} className="flex flex-col items-center">
 						Home
-						{location.pathname === "/" && (
-							<span className="bg-accent h-1 w-12"></span>
-						)}
+						<span
+							className={cn(
+								"bg-accent h-1 w-12 transition-all duration-1000 ease-in-out",
+								location.pathname === "/"
+									? "opacity-100 translate-x-0"
+									: "opacity-0 -translate-x-full",
+							)}
+						></span>
 					</Link>
 					<Link to={"/dashboard"} className="flex flex-col items-center">
 						Dashboard
-						{location.pathname === "/dashboard" && (
-							<span className="bg-accent h-1 w-12"></span>
-						)}
+						<span
+							className={cn(
+								"bg-accent h-1 w-12 transition-all duration-1000 ease-in-out",
+								location.pathname === "/dashboard"
+									? "opacity-100 translate-x-0"
+									: "opacity-0 -translate-x-full",
+							)}
+						></span>
 					</Link>
 					<Link to={"/rules"} className="flex flex-col items-center">
 						Rules
-						{location.pathname === "/rules" && (
-							<span className="bg-accent h-1 w-12"></span>
-						)}
+						<span
+							className={cn(
+								"bg-accent h-1 w-12 transition-all duration-1000 ease-in-out",
+								location.pathname === "/rules"
+									? "opacity-100 translate-x-0"
+									: "opacity-0 -translate-x-full",
+							)}
+						></span>
 					</Link>
 				</div>
 				<SignedIn>
