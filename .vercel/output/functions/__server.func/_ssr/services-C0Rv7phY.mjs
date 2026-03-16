@@ -1,6 +1,6 @@
 import { c as createServerRpc } from "./createServerRpc-wV0Vk4NU.mjs";
 import { z } from "../_libs/zod.mjs";
-import { b as api, h as handleAPIError } from "./axios-B_vivTEI.mjs";
+import { b as api, h as handleAPIError } from "./axios-Da1C0GhN.mjs";
 import { a as PredictionSchemaWithValidation, b as PredictionSchema, M as MatchSchema, P as ProfileSchema } from "./schemas-CG-vrJKh.mjs";
 import { g as getIsAuthenticated } from "./services-D737QxMl.mjs";
 import { c as createServerFn } from "./index.mjs";

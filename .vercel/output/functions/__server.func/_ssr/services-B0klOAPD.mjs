@@ -1,5 +1,5 @@
 import { c as createServerRpc } from "./createServerRpc-wV0Vk4NU.mjs";
-import { b as api } from "./axios-B_vivTEI.mjs";
+import { b as api } from "./axios-Da1C0GhN.mjs";
 import { M as MatchSchema } from "./schemas-CG-vrJKh.mjs";
 import { c as createServerFn } from "./index.mjs";
 import "../_libs/axios.mjs";
