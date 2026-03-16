@@ -31,13 +31,16 @@
 			},
 			"correctness": {
 				"noUnusedFunctionParameters": "off",
-				"noChildrenProp": "off"
+				"noChildrenProp": "off",
+				"noNestedComponentDefinitions": "off"
 			},
 			"style": {
 				"noNonNullAssertion": "off"
 			},
 			"a11y": {
-				"noStaticElementInteractions": "off"
+				"noStaticElementInteractions": "off",
+				"useSemanticElements": "off",
+				"useKeyWithClickEvents": "off"
 			}
 		}
 	},

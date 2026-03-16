@@ -1,0 +1,257 @@
+import { c as createClerkRequest, a as constants, A as AuthStatus, b as createClerkClient, d as debugRequestState } from "../_chunks/_libs/@clerk/backend.mjs";
+import { L as handleNetlifyCacheInDevInstance, M as getEnvVariable, N as apiUrlFromPublishableKey, E as handleValueOrFn, P as isProxyUrlRelative, Q as isHttpOrHttps, c as isDevelopmentFromSecretKey, R as isTruthy } from "../_chunks/_libs/@clerk/shared.mjs";
+import { e as errorThrower } from "./index-BWfzcMNy.mjs";
+import { F as json } from "../_chunks/_libs/@tanstack/router-core.mjs";
+import "node:crypto";
+import "../_chunks/_libs/react.mjs";
+import "../_libs/swr.mjs";
+import "../_libs/dequal.mjs";
+import "../_libs/tiny-invariant.mjs";
+import "../_chunks/_libs/@tanstack/history.mjs";
+import "../_libs/cookie-es.mjs";
+import "../_libs/seroval.mjs";
+import "../_libs/seroval-plugins.mjs";
+import "node:stream/web";
+import "node:stream";
+var createMiddleware = (options, __opts) => {
+  const resolvedOptions = {
+    type: "request",
+    ...__opts || options
+  };
+  return {
+    options: resolvedOptions,
+    middleware: (middleware) => {
+      return createMiddleware({}, Object.assign(resolvedOptions, { middleware }));
+    },
+    inputValidator: (inputValidator) => {
+      return createMiddleware({}, Object.assign(resolvedOptions, { inputValidator }));
+    },
+    client: (client) => {
+      return createMiddleware({}, Object.assign(resolvedOptions, { client }));
+    },
+    server: (server) => {
+      return createMiddleware({}, Object.assign(resolvedOptions, { server }));
+    }
+  };
+};
+function dedupeSerializationAdapters(deduped, serializationAdapters) {
+  for (let i = 0, len = serializationAdapters.length; i < len; i++) {
+    const current = serializationAdapters[i];
+    if (!deduped.has(current)) {
+      deduped.add(current);
+      if (current.extends) dedupeSerializationAdapters(deduped, current.extends);
+    }
+  }
+}
+var createStart = (getOptions) => {
+  return {
+    getOptions: async () => {
+      const options = await getOptions();
+      if (options.serializationAdapters) {
+        const deduped = /* @__PURE__ */ new Set();
+        dedupeSerializationAdapters(deduped, options.serializationAdapters);
+        options.serializationAdapters = Array.from(deduped);
+      }
+      return options;
+    },
+    createMiddleware
+  };
+};
+var getPublicEnvVariables = () => {
+  const getValue = (name) => {
+    return getEnvVariable(`VITE_${name}`) || getEnvVariable(name);
+  };
+  return {
+    publishableKey: getValue("CLERK_PUBLISHABLE_KEY"),
+    domain: getValue("CLERK_DOMAIN"),
+    isSatellite: isTruthy(getValue("CLERK_IS_SATELLITE")),
+    proxyUrl: getValue("CLERK_PROXY_URL"),
+    signInUrl: getValue("CLERK_SIGN_IN_URL"),
+    signUpUrl: getValue("CLERK_SIGN_UP_URL"),
+    clerkJsUrl: getValue("CLERK_JS_URL") || getValue("CLERK_JS"),
+    clerkJsVariant: getValue("CLERK_JS_VARIANT"),
+    clerkJsVersion: getValue("CLERK_JS_VERSION"),
+    telemetryDisabled: isTruthy(getValue("CLERK_TELEMETRY_DISABLED")),
+    telemetryDebug: isTruthy(getValue("CLERK_TELEMETRY_DEBUG")),
+    afterSignInUrl: getValue("CLERK_AFTER_SIGN_IN_URL"),
+    afterSignUpUrl: getValue("CLERK_AFTER_SIGN_UP_URL"),
+    newSubscriptionRedirectUrl: getValue("CLERK_CHECKOUT_CONTINUE_URL")
+  };
+};
+var commonEnvs = () => {
+  const publicEnvs = getPublicEnvVariables();
+  return {
+    // Public environment variables
+    CLERK_JS_VERSION: publicEnvs.clerkJsVersion,
+    CLERK_JS_URL: publicEnvs.clerkJsUrl,
+    PUBLISHABLE_KEY: publicEnvs.publishableKey,
+    DOMAIN: publicEnvs.domain,
+    PROXY_URL: publicEnvs.proxyUrl,
+    IS_SATELLITE: publicEnvs.isSatellite,
+    SIGN_IN_URL: publicEnvs.signInUrl,
+    SIGN_UP_URL: publicEnvs.signUpUrl,
+    TELEMETRY_DISABLED: publicEnvs.telemetryDisabled,
+    TELEMETRY_DEBUG: publicEnvs.telemetryDebug,
+    // Server-only environment variables
+    API_VERSION: getEnvVariable("CLERK_API_VERSION") || "v1",
+    SECRET_KEY: getEnvVariable("CLERK_SECRET_KEY"),
+    MACHINE_SECRET_KEY: getEnvVariable("CLERK_MACHINE_SECRET_KEY"),
+    ENCRYPTION_KEY: getEnvVariable("CLERK_ENCRYPTION_KEY"),
+    CLERK_JWT_KEY: getEnvVariable("CLERK_JWT_KEY"),
+    API_URL: getEnvVariable("CLERK_API_URL") || apiUrlFromPublishableKey(publicEnvs.publishableKey),
+    SDK_METADATA: {
+      name: "@clerk/tanstack-react-start",
+      version: "0.27.17",
+      environment: getEnvVariable("NODE_ENV")
+    }
+  };
+};
+var clerkClient = (options) => {
+  const commonEnv = commonEnvs();
+  return createClerkClient({
+    secretKey: commonEnv.SECRET_KEY,
+    machineSecretKey: commonEnv.MACHINE_SECRET_KEY,
+    publishableKey: commonEnv.PUBLISHABLE_KEY,
+    apiUrl: commonEnv.API_URL,
+    apiVersion: commonEnv.API_VERSION,
+    userAgent: `${"@clerk/tanstack-react-start"}@${"0.27.17"}`,
+    proxyUrl: commonEnv.PROXY_URL,
+    domain: commonEnv.DOMAIN,
+    isSatellite: commonEnv.IS_SATELLITE,
+    sdkMetadata: commonEnv.SDK_METADATA,
+    telemetry: {
+      disabled: commonEnv.TELEMETRY_DISABLED,
+      debug: commonEnv.TELEMETRY_DEBUG
+    },
+    ...options
+  });
+};
+var loadOptions = (request, overrides = {}) => {
+  const commonEnv = commonEnvs();
+  const secretKey = overrides.secretKey || commonEnv.SECRET_KEY;
+  const machineSecretKey = overrides.machineSecretKey || commonEnv.MACHINE_SECRET_KEY;
+  const publishableKey = overrides.publishableKey || commonEnv.PUBLISHABLE_KEY;
+  const jwtKey = overrides.jwtKey || commonEnv.CLERK_JWT_KEY;
+  const apiUrl = getEnvVariable("CLERK_API_URL") || apiUrlFromPublishableKey(publishableKey);
+  const domain = handleValueOrFn(overrides.domain, new URL(request.url)) || commonEnv.DOMAIN;
+  const isSatellite = handleValueOrFn(overrides.isSatellite, new URL(request.url)) || commonEnv.IS_SATELLITE;
+  const relativeOrAbsoluteProxyUrl = handleValueOrFn(overrides?.proxyUrl, request.clerkUrl, commonEnv.PROXY_URL);
+  const signInUrl = overrides.signInUrl || commonEnv.SIGN_IN_URL;
+  const signUpUrl = overrides.signUpUrl || commonEnv.SIGN_UP_URL;
+  const afterSignInUrl = overrides.afterSignInUrl || getPublicEnvVariables().afterSignInUrl;
+  const afterSignUpUrl = overrides.afterSignUpUrl || getPublicEnvVariables().afterSignUpUrl;
+  let proxyUrl;
+  if (!!relativeOrAbsoluteProxyUrl && isProxyUrlRelative(relativeOrAbsoluteProxyUrl)) {
+    proxyUrl = new URL(relativeOrAbsoluteProxyUrl, request.clerkUrl).toString();
+  } else {
+    proxyUrl = relativeOrAbsoluteProxyUrl;
+  }
+  if (!secretKey) {
+    throw errorThrower.throw("Clerk: no secret key provided");
+  }
+  if (isSatellite && !proxyUrl && !domain) {
+    throw errorThrower.throw("Clerk: satellite mode requires a proxy URL or domain");
+  }
+  if (isSatellite && !isHttpOrHttps(signInUrl) && isDevelopmentFromSecretKey(secretKey)) {
+    throw errorThrower.throw("Clerk: satellite mode requires a sign-in URL in production");
+  }
+  return {
+    // used to append options that are not initialized from env
+    ...overrides,
+    secretKey,
+    machineSecretKey,
+    publishableKey,
+    jwtKey,
+    apiUrl,
+    domain,
+    isSatellite,
+    proxyUrl,
+    signInUrl,
+    signUpUrl,
+    afterSignInUrl,
+    afterSignUpUrl
+  };
+};
+var wrapWithClerkState = (data) => {
+  return { __internal_clerk_state: { ...data } };
+};
+function getResponseClerkState(requestState, additionalStateOptions = {}) {
+  const { reason, message, isSignedIn, ...rest } = requestState;
+  const clerkInitialState = wrapWithClerkState({
+    __clerk_ssr_state: rest.toAuth(),
+    __publishableKey: requestState.publishableKey,
+    __proxyUrl: requestState.proxyUrl,
+    __domain: requestState.domain,
+    __isSatellite: requestState.isSatellite,
+    __signInUrl: requestState.signInUrl,
+    __signUpUrl: requestState.signUpUrl,
+    __afterSignInUrl: requestState.afterSignInUrl,
+    __afterSignUpUrl: requestState.afterSignUpUrl,
+    __clerk_debug: debugRequestState(requestState),
+    __clerkJSUrl: getEnvVariable("CLERK_JS"),
+    __clerkJSVersion: getEnvVariable("CLERK_JS_VERSION"),
+    __telemetryDisabled: isTruthy(getEnvVariable("CLERK_TELEMETRY_DISABLED")),
+    __telemetryDebug: isTruthy(getEnvVariable("CLERK_TELEMETRY_DEBUG")),
+    __signInForceRedirectUrl: additionalStateOptions.signInForceRedirectUrl || getEnvVariable("CLERK_SIGN_IN_FORCE_REDIRECT_URL") || "",
+    __signUpForceRedirectUrl: additionalStateOptions.signUpForceRedirectUrl || getEnvVariable("CLERK_SIGN_UP_FORCE_REDIRECT_URL") || "",
+    __signInFallbackRedirectUrl: additionalStateOptions.signInFallbackRedirectUrl || getEnvVariable("CLERK_SIGN_IN_FALLBACK_REDIRECT_URL") || "",
+    __signUpFallbackRedirectUrl: additionalStateOptions.signUpFallbackRedirectUrl || getEnvVariable("CLERK_SIGN_UP_FALLBACK_REDIRECT_URL") || ""
+  });
+  return clerkInitialState;
+}
+var patchRequest = (request) => {
+  const clonedRequest = new Request(request.url, {
+    headers: request.headers,
+    method: request.method,
+    redirect: request.redirect,
+    cache: request.cache,
+    signal: request.signal
+  });
+  if (clonedRequest.method !== "GET" && clonedRequest.body !== null && !("duplex" in clonedRequest)) {
+    clonedRequest.duplex = "half";
+  }
+  return clonedRequest;
+};
+var clerkMiddleware = (options) => {
+  return createMiddleware().server(async (args) => {
+    const clerkRequest = createClerkRequest(patchRequest(args.request));
+    const loadedOptions = loadOptions(clerkRequest, options);
+    const requestState = await clerkClient().authenticateRequest(clerkRequest, {
+      ...loadedOptions,
+      acceptsToken: "any"
+    });
+    const locationHeader = requestState.headers.get(constants.Headers.Location);
+    if (locationHeader) {
+      handleNetlifyCacheInDevInstance({
+        locationHeader,
+        requestStateHeaders: requestState.headers,
+        publishableKey: requestState.publishableKey
+      });
+      throw json(null, { status: 307, headers: requestState.headers });
+    }
+    if (requestState.status === AuthStatus.Handshake) {
+      throw new Error("Clerk: handshake status without redirect");
+    }
+    const clerkInitialState = getResponseClerkState(requestState, loadedOptions);
+    const result = await args.next({
+      context: {
+        clerkInitialState,
+        auth: (opts) => requestState.toAuth(opts)
+      }
+    });
+    if (requestState.headers) {
+      requestState.headers.forEach((value, key) => {
+        result.response.headers.append(key, value);
+      });
+    }
+    return result;
+  });
+};
+const startInstance = createStart(() => {
+  return {
+    requestMiddleware: [clerkMiddleware()]
+  };
+});
+export {
+  startInstance
+};
