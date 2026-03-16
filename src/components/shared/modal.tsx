@@ -24,6 +24,8 @@ type Props = {
 	initOpen?: boolean;
 	asChild?: boolean;
 	titleClass?: string;
+	headerClass?: string;
+	closeBtnClass?: string;
 };
 
 type ModalContextProps = {
@@ -41,6 +43,8 @@ export function Modal({
 	content,
 	initOpen,
 	titleClass,
+	headerClass,
+	closeBtnClass,
 	asChild = true,
 }: Props) {
 	const modalId = useId();
@@ -53,15 +57,20 @@ export function Modal({
 		<ModalContext.Provider value={{ modalId, closeModal, open }}>
 			<Dialog onOpenChange={setOpen} open={open}>
 				<DialogTrigger asChild={asChild}>{children}</DialogTrigger>
-				<DialogContent className="w-full max-w-[100vw] md:max-w-lg bg-card text-card-foreground ">
-					<DialogHeader>
+				<DialogContent
+					className="w-full bg-card text-card-foreground p-0 max-w-[calc(100vw-1rem)] mr-auto"
+					closeBtnClass={closeBtnClass}
+				>
+					<DialogHeader className={cn(headerClass)}>
 						<DialogTitle className={cn("text-left ", titleClass)}>
 							{title}
 						</DialogTitle>
-						<DialogDescription>{description}</DialogDescription>
+						<DialogDescription className="text-muted">
+							{description}
+						</DialogDescription>
 					</DialogHeader>
 					<ScrollArea className="h-full max-h-[calc(100vh-64px)] my-auto me-1">
-						<div className="py-4">{content}</div>
+						<div className="p-4">{content}</div>
 					</ScrollArea>
 				</DialogContent>
 			</Dialog>

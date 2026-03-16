@@ -1,14 +1,12 @@
 import { Image } from "@unpic/react";
-import { Star } from "lucide-react";
 import {
 	Card,
 	CardAction,
 	CardContent,
-	CardDescription,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { fullteams, teams } from "@/lib/constants";
+import { TEAMS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -31,7 +29,7 @@ export function StatCard({ data, title }: Props) {
 						<span className="text-3xl font-bold font-versus">#1</span>
 					</CardTitle>
 					<div className="flex flex-col w-full mt-4 mb-16">
-						{fullteams[0].split(" ").map((word, i) => (
+						{TEAMS[0].longName.split(" ").map((word, i) => (
 							<div
 								key={word}
 								className={cn(
@@ -52,7 +50,7 @@ export function StatCard({ data, title }: Props) {
 					</div>
 					<CardAction>
 						<Image
-							src={`./${teams[0]}.avif`}
+							src={`./${TEAMS[0].shortName}.avif`}
 							height={96}
 							width={96}
 							className="object-contain"
@@ -70,7 +68,7 @@ export function StatCard({ data, title }: Props) {
 								<span className="">{i + 2}</span>
 								<div className="flex items-center justify-between w-full">
 									<div className="flex flex-col py-2">
-										<span className="text-sm">{fullteams[i + 1]}</span>
+										<span className="text-sm">{TEAMS[i + 1].longName}</span>
 										<div className="flex items-center gap-2">
 											{Array.from({ length: 5 }).map((_, i) => (
 												<span

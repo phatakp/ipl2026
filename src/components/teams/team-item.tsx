@@ -1,9 +1,10 @@
-import { Image } from "@unpic/react";
-import { fullteams, teams } from "@/lib/constants";
+import { TEAMS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import type { Team } from "@/types";
+import { CloudImage } from "../shared/cloud-img";
 
 type Props = {
-	team: number;
+	team: Team;
 	left?: boolean;
 };
 
@@ -15,29 +16,26 @@ export function TeamItem({ team, left }: Props) {
 				left ? "md:flex-row-reverse" : "md:flex-row",
 			)}
 		>
-			<Image
-				src={`./${teams[team]}.avif`}
-				height={96}
-				width={64}
-				className="object-contain"
-				alt="team1"
-			/>
+			<CloudImage name={`${team}_team`} />
+
 			<div
 				className={cn(
 					"md:flex hidden flex-col ",
 					left ? "text-right items-end justify-end" : "text-left",
 				)}
 			>
-				{fullteams[team].split(" ").map((word) => (
-					<span
-						key={word}
-						className="font-bold text-primary-foreground/90 font-versus "
-					>
-						{word}
-					</span>
-				))}
+				{TEAMS.find((t) => t.shortName === team)
+					?.longName.split(" ")
+					.map((word) => (
+						<span
+							key={word}
+							className="font-bold text-primary-foreground/90 font-versus "
+						>
+							{word}
+						</span>
+					))}
 			</div>
-			<span className="md:hidden font-versus text-xl">{teams[team]}</span>
+			<span className="md:hidden font-versus text-xl">{team}</span>
 		</div>
 	);
 }

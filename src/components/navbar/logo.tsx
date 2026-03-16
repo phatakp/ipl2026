@@ -7,11 +7,11 @@ type Props = {
 
 export function Logo({ className }: Props) {
 	return (
-		<div className="flex justify-center items-center ipl-logo relative w-[95px]">
+		<div className="flex justify-center items-center ipl-logo relative w-25">
 			<Image
 				src={"/logo.avif"}
 				width={100}
-				height={56}
+				height={100}
 				alt="logo-1"
 				className=" relative"
 			/>
