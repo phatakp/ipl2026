@@ -1,5 +1,5 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { Image } from "@unpic/react";
+import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -7,8 +7,8 @@ import {
 	teamFormQueryOptions,
 } from "@/data/teams/query-options";
 import { cn } from "@/lib/utils";
-import type { MatchShort, Team, TeamResp } from "@/types";
-import { Badge } from "../ui/badge";
+import type { Team, TeamResp } from "@/types";
+import { CloudImage } from "../shared/cloud-img";
 
 type CardType = "short" | "full" | "form";
 
@@ -280,12 +280,7 @@ export const TeamRow = ({
 				type === "full" && "lg:w-16",
 			)}
 		>
-			<Image
-				src={`./${t?.shortName}.avif`}
-				height={24}
-				width={24}
-				alt="team1"
-			/>
+			<CloudImage name={`${t?.shortName}_team`} height={24} width={24} />
 			<span className={cn("flex md:hidden", type === "full" && "lg:flex")}>
 				{t?.shortName}
 			</span>
@@ -329,6 +324,17 @@ export const FormStat = ({
 					{f.status.charAt(0)}
 				</Badge>
 			))}
+
+			{form?.length <= 0 &&
+				[1, 2, 3].map((f) => (
+					<Badge
+						key={f}
+						variant={"outline"}
+						className="rounded-full size-4 py-2"
+					>
+						{"-"}
+					</Badge>
+				))}
 		</div>
 	);
 };

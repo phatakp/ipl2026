@@ -158,8 +158,8 @@ export {
   ProfileSchema as P,
   RESULT_TYPES as R,
   TEAMNAMES as T,
-  PredictionSchema as a,
-  PredictionSchemaWithValidation as b,
+  PredictionSchemaWithValidation as a,
+  PredictionSchema as b,
   MatchSchemaWithValidation as c,
   MATCH_STATUS as d,
   TEAMS as e

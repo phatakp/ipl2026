@@ -83,7 +83,7 @@ function getResponse() {
 }
 var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 async function getStartManifest(matchedRoutes) {
-  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-B816D76l.mjs");
+  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-JTNKDkpX.mjs");
   const startManifest = tsrStartManifest();
   const rootRoute = startManifest.routes[rootRouteId] = startManifest.routes[rootRouteId] || {};
   rootRoute.assets = rootRoute.assets || [];
@@ -134,6 +134,30 @@ const manifest = { "d00cdee145bfed0516ecf734c86ce9e5be4ed2c0858d4eb37ac33b7c19ca
 }, "482a6e781ea7c881cb91b969a203494363a1060517013d2937a6355bfe4efbea": {
   functionName: "activateProfile_createServerFn_handler",
   importer: () => import("./services-zvSi4iTg.mjs")
+}, "f0288465a7086452a3cc5b3c7937287da63c714bbcc2d77605a6eb59c9f0c37b": {
+  functionName: "getMatchPredictions_createServerFn_handler",
+  importer: () => import("./services-DwDJ8f5u.mjs")
+}, "ba8f08c4b7983f7d5efaa07606251091f8061b73cab1f8a00edec267b8f8d9a3": {
+  functionName: "getUserPredictions_createServerFn_handler",
+  importer: () => import("./services-DwDJ8f5u.mjs")
+}, "1dca0e0baffd7b0101a108cdccd9300644c171d16f54461a9f535bfccac3a838": {
+  functionName: "getUserPredictionForMatch_createServerFn_handler",
+  importer: () => import("./services-DwDJ8f5u.mjs")
+}, "d5f845ce8413ef39fbc2a27441c7e367f265b8b412508dafff8a558169e53308": {
+  functionName: "addPrediction_createServerFn_handler",
+  importer: () => import("./services-DwDJ8f5u.mjs")
+}, "59fb969987f554a477b79925edc0b2f891912870229b09df4b3a714339bc9b2a": {
+  functionName: "updatePrediction_createServerFn_handler",
+  importer: () => import("./services-DwDJ8f5u.mjs")
+}, "b2fd87a3100fff43e85ee1858e01b9e4a3581ce46a6c227e866525b6b5ac66b8": {
+  functionName: "doublePrediction_createServerFn_handler",
+  importer: () => import("./services-DwDJ8f5u.mjs")
+}, "f2bd1576844e4c5e8346f1726e3555959eaa58c3eea563f74a459484d2b293ea": {
+  functionName: "getTeams_createServerFn_handler",
+  importer: () => import("./services-DP65H5fl.mjs")
+}, "09f14719dd7dafd0f2b4d8b5132e89427440fc2e17993400914c1e35a7d7e79b": {
+  functionName: "getTeamForm_createServerFn_handler",
+  importer: () => import("./services-DP65H5fl.mjs")
 }, "413f8fb4fa90e7183eb37f37b22258b821a4675ea9d9b766c6244b7742d0f03b": {
   functionName: "getFixtures_createServerFn_handler",
   importer: () => import("./services-DIMCShPn.mjs")
@@ -164,30 +188,6 @@ const manifest = { "d00cdee145bfed0516ecf734c86ce9e5be4ed2c0858d4eb37ac33b7c19ca
 }, "d96734dae5d51ebd6bd9232fd5a9bf979a1eb55f4e952429e630fd1abb95bcbe": {
   functionName: "reverseBetsForMatch_createServerFn_handler",
   importer: () => import("./services-DIMCShPn.mjs")
-}, "f2bd1576844e4c5e8346f1726e3555959eaa58c3eea563f74a459484d2b293ea": {
-  functionName: "getTeams_createServerFn_handler",
-  importer: () => import("./services-DP65H5fl.mjs")
-}, "09f14719dd7dafd0f2b4d8b5132e89427440fc2e17993400914c1e35a7d7e79b": {
-  functionName: "getTeamForm_createServerFn_handler",
-  importer: () => import("./services-DP65H5fl.mjs")
-}, "f0288465a7086452a3cc5b3c7937287da63c714bbcc2d77605a6eb59c9f0c37b": {
-  functionName: "getMatchPredictions_createServerFn_handler",
-  importer: () => import("./services-CRbLS9dh.mjs")
-}, "ba8f08c4b7983f7d5efaa07606251091f8061b73cab1f8a00edec267b8f8d9a3": {
-  functionName: "getUserPredictions_createServerFn_handler",
-  importer: () => import("./services-CRbLS9dh.mjs")
-}, "1dca0e0baffd7b0101a108cdccd9300644c171d16f54461a9f535bfccac3a838": {
-  functionName: "getUserPredictionForMatch_createServerFn_handler",
-  importer: () => import("./services-CRbLS9dh.mjs")
-}, "d5f845ce8413ef39fbc2a27441c7e367f265b8b412508dafff8a558169e53308": {
-  functionName: "addPrediction_createServerFn_handler",
-  importer: () => import("./services-CRbLS9dh.mjs")
-}, "59fb969987f554a477b79925edc0b2f891912870229b09df4b3a714339bc9b2a": {
-  functionName: "updatePrediction_createServerFn_handler",
-  importer: () => import("./services-CRbLS9dh.mjs")
-}, "b2fd87a3100fff43e85ee1858e01b9e4a3581ce46a6c227e866525b6b5ac66b8": {
-  functionName: "doublePrediction_createServerFn_handler",
-  importer: () => import("./services-CRbLS9dh.mjs")
 } };
 async function getServerFnById(id) {
   const serverFnInfo = manifest[id];
@@ -1051,7 +1051,7 @@ var entriesPromise;
 var baseManifestPromise;
 var cachedFinalManifestPromise;
 async function loadEntries() {
-  const routerEntry = await import("./router-Bkbp-GnV.mjs").then((n) => n.A);
+  const routerEntry = await import("./router-D0bPNyc3.mjs").then((n) => n.A);
   return {
     startEntry: await import("./start-C_ca6vJb.mjs"),
     routerEntry
