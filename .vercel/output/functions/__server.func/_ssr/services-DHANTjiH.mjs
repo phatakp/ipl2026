@@ -1,5 +1,5 @@
 import { c as createServerRpc } from "./createServerRpc-wV0Vk4NU.mjs";
-import { a as auth, b as api, h as handleAPIError } from "./axios-Da1C0GhN.mjs";
+import { a as auth, b as api, h as handleAPIError } from "./axios-D7Cw_l5Y.mjs";
 import { P as ProfileSchema, A as ADMINROLE } from "./schemas-CG-vrJKh.mjs";
 import { c as createServerFn } from "./index.mjs";
 import "../_libs/axios.mjs";

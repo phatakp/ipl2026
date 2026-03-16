@@ -39,7 +39,7 @@ var auth = (async (opts) => {
 });
 const api = axios.create({
   baseURL: `${process.env.SERVER_API_URL}`,
-  timeout: 1e4,
+  timeout: 5e4,
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
