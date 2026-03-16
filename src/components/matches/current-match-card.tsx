@@ -138,15 +138,15 @@ export function CurrentMatchCard() {
 					{fixtures.slice(1).map((match, index) => (
 						<CarouselItem
 							key={index}
-							className="basis-1/5 cursor-pointer pl-2 sm:basis-1/6"
+							className="basis-1/5 cursor-pointer pl-2 sm:basis-1/6 py-1"
 							onClick={() => onThumbClick(index)}
 						>
 							<div
 								className={cn(
-									"rounded-lg relative aspect-square overflow-hidden border transition-all flex flex-col items-center justify-center",
+									"rounded-lg relative aspect-square overflow-hidden border-2 transition-all flex flex-col items-center justify-center bg-card",
 									index === selectedIndex
 										? "border-primary opacity-100"
-										: "shadow opacity-40 hover:opacity-70",
+										: "shadow opacity-80 hover:opacity-100",
 								)}
 							>
 								<span className="bg-primary text-primary-foreground absolute top-0 left-1/2 -translate-x-1/2 text-xs md:text-sm px-2 rounded-t-lg hidden md:flex items-center justify-center w-full">

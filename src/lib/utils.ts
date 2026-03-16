@@ -1,4 +1,3 @@
-import { Cloudinary } from "@cloudinary/url-gen";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -28,4 +27,8 @@ export function amountFormatter(val: number, decimalPlaces: number = 0) {
 		.formatToParts(val)
 		.map((p) => (p.type !== "literal" && p.type !== "currency" ? p.value : ""))
 		.join("");
+}
+
+export function sleep(ms: number) {
+	return new Promise((resolve) => setTimeout(resolve, ms));
 }

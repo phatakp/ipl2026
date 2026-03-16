@@ -56,7 +56,7 @@ export type TeamResp = TeamShort & {
 	forBalls: number;
 	againstRuns: number;
 	againstBalls: number;
-	form: MatchShort[];
+	form: TeamForm[];
 };
 
 export type MatchShort = {

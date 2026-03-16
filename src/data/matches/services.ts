@@ -2,6 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import z4 from "zod/v4";
 import { api, handleAPIError } from "@/integrations/axios";
 import { TEAMNAMES } from "@/lib/constants";
+import { sleep } from "@/lib/utils";
 import { MatchSchema } from "@/schemas";
 import type { MatchResp, WinnerPredResp } from "@/types";
 import { getIsAuthenticated } from "../users/services";
@@ -10,6 +11,7 @@ export const getFixtures = createServerFn({
 	method: "GET",
 }).handler(async () => {
 	const res = await api.get("/matches/fixtures");
+	await sleep(2000);
 	return res.data as MatchResp[];
 });
 
@@ -17,6 +19,7 @@ export const getResults = createServerFn({
 	method: "GET",
 }).handler(async () => {
 	const res = await api.get("/matches/results");
+	await sleep(2000);
 	return res.data as MatchResp[];
 });
 

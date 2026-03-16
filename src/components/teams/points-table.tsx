@@ -2,12 +2,9 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-	allTeamsQueryOptions,
-	teamFormQueryOptions,
-} from "@/data/teams/query-options";
+import { allTeamsQueryOptions } from "@/data/teams/query-options";
 import { cn } from "@/lib/utils";
-import type { Team, TeamResp } from "@/types";
+import type { TeamResp } from "@/types";
 import { CloudImage } from "../shared/cloud-img";
 
 type CardType = "short" | "full" | "form";
@@ -298,9 +295,9 @@ export const FormStat = ({
 	type: CardType;
 	team: TeamResp;
 }) => {
-	const { data: form } = useSuspenseQuery(
-		teamFormQueryOptions(team.shortName as Team),
-	);
+	// const { data: form } = useSuspenseQuery(
+	// 	teamFormQueryOptions(team.shortName as Team),
+	// );
 
 	return (
 		<div
@@ -309,7 +306,7 @@ export const FormStat = ({
 				type === "short" ? "hidden" : "flex",
 			)}
 		>
-			{form?.map((f, i) => (
+			{team.form?.map((f, i) => (
 				<Badge
 					key={i}
 					variant={
@@ -325,7 +322,7 @@ export const FormStat = ({
 				</Badge>
 			))}
 
-			{form?.length <= 0 &&
+			{team.form?.length <= 0 &&
 				[1, 2, 3].map((f) => (
 					<Badge
 						key={f}
