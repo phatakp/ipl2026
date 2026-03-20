@@ -17,7 +17,7 @@ export function ProfileBtn({ profile }: Props) {
 			)}
 			closeBtnClass="text-primary-foreground hover:text-accent/80"
 			title="Update Profile Details"
-			initOpen={!profile?.clerkId}
+			initOpen={!profile?.team}
 			content={<ProfileForm profile={profile} />}
 		>
 			<Button size={"sm"} className="absolute right-4 bottom-4">

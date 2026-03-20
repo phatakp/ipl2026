@@ -14,6 +14,7 @@ type Props = {
 };
 
 export function MatchCarousel({ matches, title }: Props) {
+	if (matches.length === 0) return null;
 	return (
 		<div className="flex flex-col gap-8 w-full py-4 rounded-sm">
 			<span className="title text-2xl">{title}</span>

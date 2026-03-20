@@ -1,6 +1,7 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { useAppForm } from "@/components/form/hooks";
 import { CloudImage } from "@/components/shared/cloud-img";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
 	useCreatePrediction,
@@ -8,6 +9,7 @@ import {
 	useUpdatePrediction,
 } from "@/data/predictions/hooks";
 import { currUserMatchPredQueryOptions } from "@/data/predictions/query-options";
+import { currDBUserQueryOptions } from "@/data/users/query-options";
 import { cn } from "@/lib/utils";
 import { PredictionSchemaWithValidation } from "@/schemas";
 import type { MatchResp, Team } from "@/types";
@@ -20,6 +22,7 @@ export function PredictionForm({ match }: Props) {
 	const { data: pred } = useSuspenseQuery(
 		currUserMatchPredQueryOptions(match.number),
 	);
+	const { data: user } = useSuspenseQuery(currDBUserQueryOptions());
 	const { mutate: addPrediction } = useCreatePrediction();
 	const { mutate: updatePrediction } = useUpdatePrediction();
 	const { mutate: doublePrediction } = useDoublePrediction();
@@ -59,6 +62,7 @@ export function PredictionForm({ match }: Props) {
 								<div className="flex items-center justify-between w-full gap-8">
 									<TeamButton
 										match={match}
+										disabled={!user?.isActive}
 										team={match.homeTeam.shortName}
 										currTeam={team}
 										onClick={() =>
@@ -67,6 +71,7 @@ export function PredictionForm({ match }: Props) {
 									/>
 									<TeamButton
 										match={match}
+										disabled={!user?.isActive}
 										team={match.awayTeam.shortName}
 										currTeam={team}
 										onClick={() =>
@@ -85,7 +90,7 @@ export function PredictionForm({ match }: Props) {
 							label="Stake"
 							field={field}
 							minAmount={pred?.amount ?? match.minStake}
-							isDisabled={match.hasStarted}
+							isDisabled={match.hasStarted || !user?.isActive}
 							className="w-full"
 						/>
 					)}
@@ -93,6 +98,7 @@ export function PredictionForm({ match }: Props) {
 
 				<div className="flex items-center w-full gap-8">
 					{match.hasStarted &&
+					user?.isActive &&
 					!match.hasDoubleCutoffPassed &&
 					!!pred &&
 					!pred.isDouble &&
@@ -110,13 +116,19 @@ export function PredictionForm({ match }: Props) {
 						>
 							Play Double for {match.maxDoubleAmt}
 						</Button>
-					) : !match.hasStarted ? (
+					) : !match.hasStarted && user?.isActive ? (
 						<form.SubmitButton
 							label={pred ? "Update Now" : "Predict Now"}
 							className={cn("w-full")}
 							variant="success"
 						/>
 					) : null}
+
+					{!user?.isActive && (
+						<Badge variant="destructive" className="w-full text-base">
+							Activate your profile to predict!
+						</Badge>
+					)}
 				</div>
 			</form.AppForm>
 		</form>
@@ -128,16 +140,18 @@ function TeamButton({
 	team,
 	currTeam,
 	onClick,
+	disabled,
 }: {
 	match: MatchResp;
 	team: Team;
 	currTeam?: Team;
+	disabled?: boolean;
 	onClick: () => void;
 }) {
 	return (
 		<Button
 			type="button"
-			disabled={match.hasStarted}
+			disabled={match.hasStarted || !!disabled}
 			variant={team === currTeam ? "default" : "outline"}
 			className={cn(
 				"flex-col aspect-square size-32",

@@ -40,8 +40,6 @@ export function UpdateMatchForm({ match }: Props) {
 		},
 	});
 
-	console.log(form.state.values);
-
 	return (
 		<form
 			className="flex flex-col items-center gap-7"

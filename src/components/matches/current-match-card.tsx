@@ -135,7 +135,7 @@ export function CurrentMatchCard() {
 				className="w-full"
 			>
 				<CarouselContent className="-ml-2 flex-row">
-					{fixtures.slice(1).map((match, index) => (
+					{fixtures.map((match, index) => (
 						<CarouselItem
 							key={index}
 							className="basis-1/5 cursor-pointer pl-2 sm:basis-1/6 py-1"

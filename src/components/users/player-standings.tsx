@@ -1,3 +1,4 @@
+import { useAuth, useSession, useUser } from "@clerk/clerk-react";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { CircleArrowOutUpRight } from "lucide-react";
@@ -25,6 +26,7 @@ import {
 } from "@/data/users/query-options";
 import { cn } from "@/lib/utils";
 import { Route } from "@/routes/dashboard.{-$userId}";
+import type { Team } from "@/types";
 import { ProfileBtn } from "./profile-btn";
 
 export function PlayerStandings() {
@@ -66,7 +68,24 @@ export function PlayerStandings() {
 		};
 	}, [mainApi, onSelect]);
 
-	if (!players.length) return null;
+	const { isLoaded, sessionClaims } = useAuth();
+	if (!players.length)
+		return (
+			<ProfileBtn
+				profile={{
+					clerkId: sessionClaims?.id ?? "",
+					firstName: sessionClaims?.firstName ?? "",
+					lastName: sessionClaims?.lastName ?? "",
+					team: "" as Team,
+					isActive: false,
+					email: sessionClaims?.email ?? "",
+					role: sessionClaims?.metadata?.role ?? "PLAYER",
+					balance: 0,
+					doublesLeft: 0,
+					rank: 0,
+				}}
+			/>
+		);
 	const curr = players.find((p) => p.clerkId === (userId ?? loggedInUserId));
 	const rest = players.filter((p) => p.clerkId !== (userId ?? loggedInUserId));
 	const users = [curr, ...rest];
@@ -78,7 +97,7 @@ export function PlayerStandings() {
 					{users.map((user, index) => (
 						<CarouselItem key={index}>
 							<div className="relative overflow-hidden">
-								<Card className="shadow relative w-[calc(100vw-32px)] lg:w-full h-full md:min-h-[30vh] rounded-lg overflow-hidden p-0 flex flex-col gap-4 ">
+								<Card className="shadow relative w-[calc(100vw-32px)] lg:w-full h-full md:min-h-[37vh] rounded-lg overflow-hidden p-0 flex flex-col gap-4 ">
 									<CardHeader className="rounded-t-lg  relative overflow-clip bg-primary text-primary-foreground py-2">
 										<CardTitle className="font-team text-4xl pt-2">
 											#{user?.rank}
@@ -93,6 +112,13 @@ export function PlayerStandings() {
 											<span className="title text-3xl font-team">
 												{user?.firstName} {user?.lastName}
 											</span>
+											{user?.clerkId &&
+												user.clerkId === loggedInUserId &&
+												!user.isActive && (
+													<Badge className="" variant={"destructive"}>
+														Your profile is not active yet!
+													</Badge>
+												)}
 											<div className="flex items-center gap-1">
 												{form?.map((f, i) => (
 													<Badge
