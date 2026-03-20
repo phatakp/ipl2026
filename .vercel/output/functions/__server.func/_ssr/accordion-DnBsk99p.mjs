@@ -1,6 +1,6 @@
 import { j as jsxRuntimeExports } from "../_chunks/_libs/react.mjs";
 import { c as cn } from "./utils-B5VFS_qv.mjs";
-import { b as ChevronDown } from "../_libs/lucide-react.mjs";
+import { C as ChevronDown } from "../_libs/lucide-react.mjs";
 import { R as Root2, I as Item, H as Header, T as Trigger2, C as Content2 } from "../_chunks/_libs/@radix-ui/react-accordion.mjs";
 function Accordion({
   ...props

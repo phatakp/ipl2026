@@ -3036,5 +3036,6 @@ export {
   UserButton as U,
   SignedOut as a,
   SignUp as b,
-  SignIn as c
+  SignIn as c,
+  useAuth as u
 };

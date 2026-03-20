@@ -205,7 +205,7 @@ const __iconNode = [
 const X = createLucideIcon("x", __iconNode);
 export {
   ArrowRight as A,
-  Calendar as C,
+  ChevronDown as C,
   FileQuestionMark as F,
   House as H,
   IndianRupee as I,
@@ -215,8 +215,8 @@ export {
   UserKey as U,
   X,
   Handshake as a,
-  ChevronDown as b,
-  CircleArrowOutUpRight as c,
+  CircleArrowOutUpRight as b,
+  Calendar as c,
   Pen as d,
   ChevronRight as e,
   Check as f,
