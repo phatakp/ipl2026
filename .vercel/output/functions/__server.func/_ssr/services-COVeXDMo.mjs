@@ -138,7 +138,7 @@ const getUserByIdFromDB = createServerFn({
     isAuthenticated
   } = await auth();
   if (!isAuthenticated) return null;
-  if (!data.clerkId.startsWith("user_")) return null;
+  if (!data?.clerkId?.startsWith("user_")) return null;
   const res = await api.get(`/users/${data.clerkId}`);
   return res.data;
 });
@@ -158,7 +158,7 @@ const getUserFormById = createServerFn({
     isAuthenticated
   } = await auth();
   if (!isAuthenticated) return [];
-  if (!data.clerkId.startsWith("user_")) return [];
+  if (!data?.clerkId?.startsWith("user_")) return [];
   const res = await api.get(`/users/form/${data.clerkId}`);
   return res.data;
 });

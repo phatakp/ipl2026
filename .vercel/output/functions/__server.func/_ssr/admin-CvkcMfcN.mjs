@@ -2,8 +2,8 @@ import { j as jsxRuntimeExports, r as reactExports } from "../_chunks/_libs/reac
 import "../_chunks/_libs/@clerk/clerk-react.mjs";
 import { u as useSuspenseQuery } from "../_chunks/_libs/@tanstack/react-query.mjs";
 import { T as Table, a as TableCaption, b as TableHeader, c as TableRow, d as TableHead, e as TableBody, f as TableCell } from "./table-BOrThMoU.mjs";
-import { u as useActivateProfile } from "./hooks-ZMqPDsxp.mjs";
-import { B as Button, a as allUsersQueryOptions } from "./router-Dz2qoBj_.mjs";
+import { u as useActivateProfile } from "./hooks-BN0CtL3J.mjs";
+import { B as Button, a as allUsersQueryOptions } from "./router-1uHAjvfv.mjs";
 import { A as ADMINROLE } from "./schemas-CG-vrJKh.mjs";
 import { B as Badge } from "./badge-C7LX2Hb0.mjs";
 import { K as useUser } from "../_chunks/_libs/@clerk/shared.mjs";

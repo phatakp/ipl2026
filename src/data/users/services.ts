@@ -41,7 +41,7 @@ export const getUserByIdFromDB = createServerFn({
 	.handler(async ({ data }) => {
 		const { isAuthenticated } = await auth();
 		if (!isAuthenticated) return null;
-		if (!data.clerkId.startsWith("user_")) return null;
+		if (!data?.clerkId?.startsWith("user_")) return null;
 		const res = await api.get(`/users/${data.clerkId}`);
 		return res.data as UserResp | null;
 	});
@@ -53,7 +53,7 @@ export const getUserFormById = createServerFn({
 	.handler(async ({ data }) => {
 		const { isAuthenticated } = await auth();
 		if (!isAuthenticated) return [];
-		if (!data.clerkId.startsWith("user_")) return [];
+		if (!data?.clerkId?.startsWith("user_")) return [];
 		const res = await api.get(`/users/form/${data.clerkId}`);
 		return res.data as UserForm[];
 	});

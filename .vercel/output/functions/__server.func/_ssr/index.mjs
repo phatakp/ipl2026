@@ -83,7 +83,7 @@ function getResponse() {
 }
 var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 async function getStartManifest(matchedRoutes) {
-  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-KX_RVjHd.mjs");
+  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-cOi_vQya.mjs");
   const startManifest = tsrStartManifest();
   const rootRoute = startManifest.routes[rootRouteId] = startManifest.routes[rootRouteId] || {};
   rootRoute.assets = rootRoute.assets || [];
@@ -115,25 +115,25 @@ const manifest = { "d00cdee145bfed0516ecf734c86ce9e5be4ed2c0858d4eb37ac33b7c19ca
   importer: () => import("./theme-CCtvGfID.mjs")
 }, "c49cf7be3d4d22abc557254a15b02fc9976ad337445821d9005cea5828e06447": {
   functionName: "getIsAuthenticated_createServerFn_handler",
-  importer: () => import("./services-DHANTjiH.mjs")
+  importer: () => import("./services-COVeXDMo.mjs")
 }, "bf9f68cc3f0968159fd2f3c7c5c5185442ded9df58820661b26d320cf7ea5c4f": {
   functionName: "getAllUsersFromDB_createServerFn_handler",
-  importer: () => import("./services-DHANTjiH.mjs")
+  importer: () => import("./services-COVeXDMo.mjs")
 }, "ad44a5199b7a96bc5814a39450f24e1e1176961a490dc28b70c412213e18ae0b": {
   functionName: "getCurrUserFromDB_createServerFn_handler",
-  importer: () => import("./services-DHANTjiH.mjs")
+  importer: () => import("./services-COVeXDMo.mjs")
 }, "921afd49a22a8b4badc70e6e5de9a7049f90b42081dc93e1989b7005b66288f9": {
   functionName: "getUserByIdFromDB_createServerFn_handler",
-  importer: () => import("./services-DHANTjiH.mjs")
+  importer: () => import("./services-COVeXDMo.mjs")
 }, "da1f3cd09ae2f7b78d3b4136f94789eeb3f5728f1f08ef213fd3515fef437705": {
   functionName: "getUserFormById_createServerFn_handler",
-  importer: () => import("./services-DHANTjiH.mjs")
+  importer: () => import("./services-COVeXDMo.mjs")
 }, "9680c0ae31fff5a0df006f08fbe1f1a69c473424a668f07ebe90dcaef197f290": {
   functionName: "upsertProfile_createServerFn_handler",
-  importer: () => import("./services-DHANTjiH.mjs")
+  importer: () => import("./services-COVeXDMo.mjs")
 }, "482a6e781ea7c881cb91b969a203494363a1060517013d2937a6355bfe4efbea": {
   functionName: "activateProfile_createServerFn_handler",
-  importer: () => import("./services-DHANTjiH.mjs")
+  importer: () => import("./services-COVeXDMo.mjs")
 }, "f0288465a7086452a3cc5b3c7937287da63c714bbcc2d77605a6eb59c9f0c37b": {
   functionName: "getMatchPredictions_createServerFn_handler",
   importer: () => import("./services-BbrgSFPz.mjs")
@@ -152,9 +152,6 @@ const manifest = { "d00cdee145bfed0516ecf734c86ce9e5be4ed2c0858d4eb37ac33b7c19ca
 }, "b2fd87a3100fff43e85ee1858e01b9e4a3581ce46a6c227e866525b6b5ac66b8": {
   functionName: "doublePrediction_createServerFn_handler",
   importer: () => import("./services-BbrgSFPz.mjs")
-}, "f2bd1576844e4c5e8346f1726e3555959eaa58c3eea563f74a459484d2b293ea": {
-  functionName: "getTeams_createServerFn_handler",
-  importer: () => import("./services-D_sJroCx.mjs")
 }, "413f8fb4fa90e7183eb37f37b22258b821a4675ea9d9b766c6244b7742d0f03b": {
   functionName: "getFixtures_createServerFn_handler",
   importer: () => import("./services-IrIRg_3H.mjs")
@@ -185,6 +182,9 @@ const manifest = { "d00cdee145bfed0516ecf734c86ce9e5be4ed2c0858d4eb37ac33b7c19ca
 }, "d96734dae5d51ebd6bd9232fd5a9bf979a1eb55f4e952429e630fd1abb95bcbe": {
   functionName: "reverseBetsForMatch_createServerFn_handler",
   importer: () => import("./services-IrIRg_3H.mjs")
+}, "f2bd1576844e4c5e8346f1726e3555959eaa58c3eea563f74a459484d2b293ea": {
+  functionName: "getTeams_createServerFn_handler",
+  importer: () => import("./services-D_sJroCx.mjs")
 } };
 async function getServerFnById(id) {
   const serverFnInfo = manifest[id];
@@ -1048,7 +1048,7 @@ var entriesPromise;
 var baseManifestPromise;
 var cachedFinalManifestPromise;
 async function loadEntries() {
-  const routerEntry = await import("./router-Dz2qoBj_.mjs").then((n) => n.v);
+  const routerEntry = await import("./router-1uHAjvfv.mjs").then((n) => n.v);
   return {
     startEntry: await import("./start-C_ca6vJb.mjs"),
     routerEntry

@@ -1,8 +1,8 @@
 import { r as reactExports, j as jsxRuntimeExports } from "../_chunks/_libs/react.mjs";
 import { u as useSuspenseQuery } from "../_chunks/_libs/@tanstack/react-query.mjs";
 import { L as Link } from "../_chunks/_libs/@tanstack/react-router.mjs";
-import { g as Carousel, h as CarouselContent, i as CarouselItem, a as CloudImage, C as Card, k as CarouselPrevious, l as CarouselNext } from "./card-hk-oWgkG.mjs";
-import { B as Button, S as Skeleton, s as fixturesQueryOptions } from "./router-Dz2qoBj_.mjs";
+import { g as Carousel, h as CarouselContent, i as CarouselItem, a as CloudImage, C as Card, k as CarouselPrevious, l as CarouselNext } from "./card-M1dJ9UHe.mjs";
+import { B as Button, S as Skeleton, s as fixturesQueryOptions } from "./router-1uHAjvfv.mjs";
 import { c as cn } from "./utils-B5VFS_qv.mjs";
 import { B as Badge } from "./badge-C7LX2Hb0.mjs";
 import { c as Calendar, P as Pin, b as CircleArrowOutUpRight, e as ChevronRight } from "../_libs/lucide-react.mjs";

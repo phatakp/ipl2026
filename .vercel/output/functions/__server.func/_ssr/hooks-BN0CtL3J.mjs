@@ -2,7 +2,7 @@ import { b as useQueryClient, c as useMutation } from "../_chunks/_libs/@tanstac
 import { u as useRouter } from "../_chunks/_libs/@tanstack/react-router.mjs";
 import { z as zt } from "../_libs/react-hot-toast.mjs";
 import { u as useModal } from "./modal-BYwX95Ag.mjs";
-import { q as userKeys } from "./router-Dz2qoBj_.mjs";
+import { q as userKeys } from "./router-1uHAjvfv.mjs";
 import { u as upsertProfile, f as activateProfile } from "./services-D737QxMl.mjs";
 function useUpsertProfile() {
   const queryClient = useQueryClient();

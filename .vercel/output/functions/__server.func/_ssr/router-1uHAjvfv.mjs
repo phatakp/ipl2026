@@ -438,14 +438,14 @@ const userFormQueryOptions = (userId) => queryOptions({
   queryKey: userKeys.userFormById(userId),
   queryFn: () => getUserFormById({ data: { clerkId: userId } }),
   staleTime: 1e3 * 60 * 60 * 24,
-  enabled: userId.startsWith("user_")
+  enabled: userId?.startsWith("user_")
 });
 const allUsersQueryOptions = queryOptions({
   queryKey: userKeys.all,
   queryFn: getAllUsersFromDB,
   staleTime: 1e3 * 60 * 60 * 24
 });
-const $$splitComponentImporter$5 = () => import("./admin-SjqrF7gs.mjs");
+const $$splitComponentImporter$5 = () => import("./admin-CvkcMfcN.mjs");
 const Route$5 = createFileRoute("/admin")({
   loader: async ({
     context
@@ -531,7 +531,7 @@ const allTeamsQueryOptions = () => queryOptions({
   queryFn: () => getTeams(),
   staleTime: 1e3 * 60 * 60 * 24
 });
-const $$splitComponentImporter$4 = () => import("./index-ink9AmQj.mjs");
+const $$splitComponentImporter$4 = () => import("./index-Dx_SI0MO.mjs");
 const Route$4 = createFileRoute("/")({
   component: lazyRouteComponent($$splitComponentImporter$4, "component"),
   loader: async ({
@@ -599,7 +599,7 @@ const userPredsQueryOptions = (userId) => queryOptions({
   queryFn: () => getUserPredictions({ data: { clerkId: userId } }),
   staleTime: 1e3 * 60 * 60 * 24
 });
-const $$splitComponentImporter$1 = () => import("./matches._matchNum-riA08Io-.mjs");
+const $$splitComponentImporter$1 = () => import("./matches._matchNum-CbzgXSgY.mjs");
 const Route$1 = createFileRoute("/matches/$matchNum")({
   parseParams: (params) => ({
     matchNum: Number(params.matchNum)
@@ -623,7 +623,7 @@ const Route$1 = createFileRoute("/matches/$matchNum")({
   },
   component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-const $$splitComponentImporter = () => import("./dashboard._-_userId_-DbRknAt-.mjs");
+const $$splitComponentImporter = () => import("./dashboard._-_userId_-vQ8USIDw.mjs");
 const Route = createFileRoute("/dashboard/{-$userId}")({
   beforeLoad: async ({
     location
