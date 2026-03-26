@@ -1,4 +1,3 @@
-import { IndianRupee } from "lucide-react";
 import { amountFormatter, cn } from "@/lib/utils";
 
 type Props = {
@@ -28,9 +27,9 @@ export function Amount({
 	}
 	return (
 		<div className={cn("flex items-center justify-end", containerClass)}>
-			<IndianRupee
+			{/* <IndianRupee
 				className={cn("size-3.5 text-muted-foreground", iconClass)}
-			/>
+			/> */}
 			{integerPart && decimalPart ? (
 				<div className="flex items-end">
 					<span

@@ -35,7 +35,7 @@ export function PredictionChart({ preds }: Props) {
 						Prediction Stats
 					</CardTitle>
 					<CardDescription className="text-base text-primary-foreground/90 w-full">
-						Total prediction amounts for each team
+						Total prediction points for each team
 					</CardDescription>
 				</CardHeader>
 				<CardContent className="flex flex-1 items-center justify-center pb-0">
@@ -64,7 +64,7 @@ export function PredictionChart({ preds }: Props) {
 
 	const chartConfig = {
 		amount: {
-			label: "Amount",
+			label: "Points",
 			color: "var(--chart-1)",
 		},
 		label: {
@@ -79,7 +79,7 @@ export function PredictionChart({ preds }: Props) {
 					Prediction Stats
 				</CardTitle>
 				<CardDescription className="text-base text-primary-foreground/90 w-full">
-					Total prediction amounts for each team
+					Total prediction points for each team
 				</CardDescription>
 			</CardHeader>
 			<CardContent className="flex flex-1 items-center pb-0">

@@ -1,4 +1,4 @@
-import { useAuth, useSession, useUser } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/clerk-react";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { CircleArrowOutUpRight } from "lucide-react";
@@ -27,6 +27,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Route } from "@/routes/dashboard.{-$userId}";
 import type { Team } from "@/types";
+import { PlayerStandingsLoader } from "./player-stadings-loader";
 import { ProfileBtn } from "./profile-btn";
 
 export function PlayerStandings() {
@@ -69,6 +70,8 @@ export function PlayerStandings() {
 	}, [mainApi, onSelect]);
 
 	const { isLoaded, sessionClaims } = useAuth();
+	if (!isLoaded) return <PlayerStandingsLoader />;
+
 	if (!players.length)
 		return (
 			<ProfileBtn

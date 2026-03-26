@@ -34,7 +34,7 @@ function RouteComponent() {
 						<ol className="list-inside list-disc space-y-4 text-base">
 							<li>Every player will need to predict the overall IPL winner.</li>
 							<li>
-								An automatic stake of Rs.500/- will be applicable for the IPL
+								An automatic stake of 500 points will be applicable for the IPL
 								Winner, to be settled after final match.
 							</li>
 							<li>
@@ -42,7 +42,7 @@ function RouteComponent() {
 								<span className="underline underline-offset-2 font-semibold">
 									(only applicable for league phase)
 								</span>{" "}
-								<br />. This doubles the winning/lost amount for the match.
+								<br />. This doubles the winning/lost points for the match.
 								<span className="underline underline-offset-2 font-semibold text-foreground">
 									(additional details in settlement section below)
 								</span>
@@ -52,9 +52,9 @@ function RouteComponent() {
 								tournament and settle dues (if any).
 							</li>
 
-							<li>
+							{/* <li>
 								<span>
-									A caution deposit of Rs.500/ has to be made to{" "}
+									A caution deposit of 500/ has to be made to{" "}
 									<span className="mr-2 underline underline-offset-2 font-semibold text-foreground">
 										9130469142 (PhonePe / GPay)
 									</span>
@@ -62,7 +62,7 @@ function RouteComponent() {
 									<br /> Until then the player status will be inactive and they
 									will not be able to place predictions.
 								</span>
-							</li>
+							</li> */}
 						</ol>
 					</AccordionContent>
 				</AccordionItem>
@@ -104,18 +104,18 @@ function RouteComponent() {
 											<TableCell className="font-medium">
 												League Phase
 											</TableCell>
-											<TableCell className="text-right">Rs.50/-</TableCell>
+											<TableCell className="text-right">50 points</TableCell>
 										</TableRow>
 
 										<TableRow>
 											<TableCell className="font-medium">
 												Qualifiers/Eliminator
 											</TableCell>
-											<TableCell className="text-right">Rs.100/-</TableCell>
+											<TableCell className="text-right">100 points</TableCell>
 										</TableRow>
 										<TableRow>
 											<TableCell className="font-medium">Final</TableCell>
-											<TableCell className="text-right">Rs.200/-</TableCell>
+											<TableCell className="text-right">200 points</TableCell>
 										</TableRow>
 									</TableBody>
 								</Table>
@@ -126,14 +126,14 @@ function RouteComponent() {
 							</li>
 
 							<li>
-								Minimum Double amount will be 2x of current highest stake for
+								Minimum Double points will be 2x of current highest stake for
 								the match. If current highest bet is 60, minimum double will be
-								120.
+								120 points.
 							</li>
 							<li className="text-foreground">
 								Doubles can be overridden by another double (but will need 2x of
-								current double amount as stake.) <br />
-								Applicable amount will be displayed at time of placing double.
+								current double points as stake.) <br />
+								Applicable points will be displayed at time of placing double.
 							</li>
 						</ol>
 					</AccordionContent>
@@ -158,13 +158,13 @@ function RouteComponent() {
 									<TableBody>
 										<TableRow>
 											<TableCell className="font-medium">
-												Increase of stake amount
+												Increase of points at stake
 											</TableCell>
 											<TableCell>Allowed until start of match</TableCell>
 										</TableRow>
 										<TableRow>
 											<TableCell className="font-medium">
-												Reduction of stake amount
+												Reduction of points at stake
 											</TableCell>
 											<TableCell>
 												Allowed until 30 mins prior to start of match
@@ -183,7 +183,7 @@ function RouteComponent() {
 													<li>
 														From 30 mins prior to until start of match -{" "}
 														<span className="font-semibold text-foreground">
-															Stake amount should be 2x the current stake.
+															Points at stake should be 2x the current stake.
 														</span>
 													</li>
 													<li>
@@ -234,7 +234,7 @@ function RouteComponent() {
 												If lost (no double played)
 											</TableCell>
 											<TableCell>
-												Stake amount to be debited from balance.
+												Points at stake to be debited from balance.
 											</TableCell>
 										</TableRow>
 
@@ -243,7 +243,7 @@ function RouteComponent() {
 												If defaulted (no double played)
 											</TableCell>
 											<TableCell>
-												Min Stake amount for match to be debited from balance
+												Min Stake points for match to be debited from balance
 												<span className="text-foreground">
 													{" "}
 													(irrespective of match result).
@@ -256,8 +256,8 @@ function RouteComponent() {
 												If won (no double played)
 											</TableCell>
 											<TableCell>
-												Credit Amount = (Your Stake / Total Winning stake
-												amount) x Total Losing stake amount
+												Credit Points = (Your Stake / Total of Winning points) x
+												Total of Losing points
 											</TableCell>
 										</TableRow>
 
@@ -266,7 +266,7 @@ function RouteComponent() {
 												If lost (double played)
 											</TableCell>
 											<TableCell>
-												2 x Stake amount to be debited from balance{" "}
+												2 x Stake points to be debited from balance{" "}
 												<span className="text-foreground">
 													{" "}
 													(only if double was won by someone).
@@ -279,7 +279,7 @@ function RouteComponent() {
 												If defaulted (double played)
 											</TableCell>
 											<TableCell>
-												2 x Min Stake amount for match to be debited from
+												2 x Min Stake points for match to be debited from
 												balance{" "}
 												<span className="text-foreground">
 													{" "}
@@ -294,13 +294,13 @@ function RouteComponent() {
 												If won (double played)
 											</TableCell>
 											<TableCell>
-												Credit Amount ={" "}
+												Credit Points ={" "}
 												<span className="text-foreground">
 													{" "}
-													Total Losing Stake Amount
+													Total Losing Stake Points
 												</span>{" "}
-												+ ((Your Stake / Total Winning stake amount) x Total
-												Losing stake amount)
+												+ ((Your Stake / Total Winning stake points) x Total
+												Losing stake points)
 											</TableCell>
 										</TableRow>
 									</TableBody>

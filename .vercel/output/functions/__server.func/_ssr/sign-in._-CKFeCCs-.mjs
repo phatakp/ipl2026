@@ -1,0 +1,53 @@
+import { j as jsxRuntimeExports } from "../_chunks/_libs/react.mjs";
+import { c as SignIn } from "../_chunks/_libs/@clerk/clerk-react.mjs";
+import { B as Background } from "./background-BCSq3iBn.mjs";
+import "../_chunks/_libs/@clerk/shared.mjs";
+import "../_libs/swr.mjs";
+import "../_libs/dequal.mjs";
+import "../_chunks/_libs/react-dom.mjs";
+import "util";
+import "crypto";
+import "async_hooks";
+import "stream";
+import "./router-BeZu7T7S.mjs";
+import "../_chunks/_libs/@tanstack/react-router.mjs";
+import "../_chunks/_libs/@tanstack/router-core.mjs";
+import "../_libs/tiny-invariant.mjs";
+import "../_chunks/_libs/@tanstack/history.mjs";
+import "../_libs/cookie-es.mjs";
+import "../_libs/seroval.mjs";
+import "../_libs/seroval-plugins.mjs";
+import "node:stream/web";
+import "node:stream";
+import "../_libs/tiny-warning.mjs";
+import "../_libs/isbot.mjs";
+import "../_chunks/_libs/@tanstack/react-router-ssr-query.mjs";
+import "../_chunks/_libs/@tanstack/react-query.mjs";
+import "../_chunks/_libs/@tanstack/query-core.mjs";
+import "../_chunks/_libs/@tanstack/router-ssr-query-core.mjs";
+import "../_chunks/_libs/@radix-ui/react-slot.mjs";
+import "../_chunks/_libs/@radix-ui/react-compose-refs.mjs";
+import "../_libs/class-variance-authority.mjs";
+import "../_libs/clsx.mjs";
+import "../_libs/tailwind-merge.mjs";
+import "./schemas-pJJa3z0V.mjs";
+import "../_libs/zod.mjs";
+import "../_chunks/_libs/@unpic/react.mjs";
+import "../_chunks/_libs/@unpic/core.mjs";
+import "../_libs/unpic.mjs";
+import "./services-DjdOH3KL.mjs";
+import "./index.mjs";
+import "node:async_hooks";
+import "../_libs/h3-v2.mjs";
+import "../_libs/rou3.mjs";
+import "../_libs/srvx.mjs";
+import "../_chunks/_libs/@clerk/themes.mjs";
+import "../_libs/react-hot-toast.mjs";
+import "../_libs/goober.mjs";
+import "../_libs/lucide-react.mjs";
+function RouteComponent() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Background, { type: "grid", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col items-center justify-center gap-6 min-h-screen", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "shadow-xl shadow-accent", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SignIn, { forceRedirectUrl: "/dashboard", signUpUrl: "/sign-up" }) }) }) });
+}
+export {
+  RouteComponent as component
+};

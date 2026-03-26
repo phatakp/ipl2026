@@ -55,7 +55,7 @@ export function PredCarouselItem({ pred, isUserPred, matchWinnerAmt }: Props) {
 									</div>
 									{!["PLACED", "DEFAULT"].includes(pred.status) && (
 										<div className="flex items-center gap-2 text-sm ">
-											Stake:
+											Points at Stake:
 											<Amount amount={pred.amount} className="text-sm" />
 										</div>
 									)}

@@ -130,7 +130,7 @@ export const PredictionSchema = z4.object({
 		z4.enum(TEAMNAMES, { error: "Team is required" }),
 		z4.undefined(),
 	]),
-	amount: z4.number().min(50, { error: "Min Amount: 50 required" }),
+	amount: z4.number().min(50, { error: "Min Points: 50 required" }),
 	isDouble: z4.boolean(),
 });
 
