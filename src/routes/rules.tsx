@@ -274,7 +274,7 @@ function RouteComponent() {
 											</TableCell>
 										</TableRow>
 
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">
 												If defaulted (double played)
 											</TableCell>

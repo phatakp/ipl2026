@@ -87,7 +87,7 @@ export function PredictionForm({ match }: Props) {
 				<form.AppField name={"amount"}>
 					{(field) => (
 						<field.AmountField
-							label="Stake"
+							label="Points at Stake"
 							field={field}
 							minAmount={pred?.amount ?? match.minStake}
 							isDisabled={match.hasStarted || !user?.isActive}
