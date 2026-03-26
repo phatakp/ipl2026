@@ -47,10 +47,10 @@ function RouteComponent() {
 									(additional details in settlement section below)
 								</span>
 							</li>
-							<li>
+							{/* <li>
 								Once a player registers, they need to complete the whole
 								tournament and settle dues (if any).
-							</li>
+							</li> */}
 
 							{/* <li>
 								<span>
@@ -100,20 +100,20 @@ function RouteComponent() {
 										</TableRow>
 									</TableHeader>
 									<TableBody>
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">
 												League Phase
 											</TableCell>
 											<TableCell className="text-right">50 points</TableCell>
 										</TableRow>
 
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">
 												Qualifiers/Eliminator
 											</TableCell>
 											<TableCell className="text-right">100 points</TableCell>
 										</TableRow>
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">Final</TableCell>
 											<TableCell className="text-right">200 points</TableCell>
 										</TableRow>
@@ -127,8 +127,8 @@ function RouteComponent() {
 
 							<li>
 								Minimum Double points will be 2x of current highest stake for
-								the match. If current highest bet is 60, minimum double will be
-								120 points.
+								the match. If current highest stake is 60, minimum double will
+								be 120 points.
 							</li>
 							<li className="text-foreground">
 								Doubles can be overridden by another double (but will need 2x of
@@ -156,13 +156,13 @@ function RouteComponent() {
 										</TableRow>
 									</TableHeader>
 									<TableBody>
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">
 												Increase of points at stake
 											</TableCell>
 											<TableCell>Allowed until start of match</TableCell>
 										</TableRow>
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">
 												Reduction of points at stake
 											</TableCell>
@@ -170,7 +170,7 @@ function RouteComponent() {
 												Allowed until 30 mins prior to start of match
 											</TableCell>
 										</TableRow>
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">Team Change</TableCell>
 											<TableCell>
 												<ul>
@@ -195,7 +195,7 @@ function RouteComponent() {
 												</ul>
 											</TableCell>
 										</TableRow>
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">
 												IPL Winner Change
 											</TableCell>
@@ -229,7 +229,7 @@ function RouteComponent() {
 										</TableRow>
 									</TableHeader>
 									<TableBody>
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">
 												If lost (no double played)
 											</TableCell>
@@ -238,7 +238,7 @@ function RouteComponent() {
 											</TableCell>
 										</TableRow>
 
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">
 												If defaulted (no double played)
 											</TableCell>
@@ -251,7 +251,7 @@ function RouteComponent() {
 											</TableCell>
 										</TableRow>
 
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">
 												If won (no double played)
 											</TableCell>
@@ -261,7 +261,7 @@ function RouteComponent() {
 											</TableCell>
 										</TableRow>
 
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">
 												If lost (double played)
 											</TableCell>
@@ -289,7 +289,7 @@ function RouteComponent() {
 											</TableCell>
 										</TableRow>
 
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">
 												If won (double played)
 											</TableCell>
@@ -320,7 +320,7 @@ function RouteComponent() {
 										</TableRow>
 									</TableHeader>
 									<TableBody>
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">P1</TableCell>
 											<TableCell>CSK 30</TableCell>
 											<TableCell className="text-right text-success">
@@ -331,7 +331,7 @@ function RouteComponent() {
 											</TableCell>
 										</TableRow>
 
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">P2</TableCell>
 											<TableCell>CSK 50</TableCell>
 											<TableCell className="text-right text-success">
@@ -342,7 +342,7 @@ function RouteComponent() {
 											</TableCell>
 										</TableRow>
 
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">P3</TableCell>
 											<TableCell>SRH 40</TableCell>
 											<TableCell className="text-right text-destructive">
@@ -353,7 +353,7 @@ function RouteComponent() {
 											</TableCell>
 										</TableRow>
 
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">P4</TableCell>
 											<TableCell>CSK 30</TableCell>
 											<TableCell className="text-right text-success">
@@ -364,7 +364,7 @@ function RouteComponent() {
 											</TableCell>
 										</TableRow>
 
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">P5</TableCell>
 											<TableCell>SRH 80</TableCell>
 											<TableCell className="text-right text-destructive">
@@ -375,7 +375,7 @@ function RouteComponent() {
 											</TableCell>
 										</TableRow>
 
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">P6</TableCell>
 											<TableCell>SRH 60</TableCell>
 											<TableCell className="text-right text-destructive">
@@ -398,7 +398,7 @@ function RouteComponent() {
 										</TableRow>
 									</TableHeader>
 									<TableBody>
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">P1</TableCell>
 											<TableCell>CSK 30</TableCell>
 											<TableCell className="text-right text-success">
@@ -409,7 +409,7 @@ function RouteComponent() {
 											</TableCell>
 										</TableRow>
 
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="relative font-medium">
 												P2
 												<Badge
@@ -428,7 +428,7 @@ function RouteComponent() {
 											</TableCell>
 										</TableRow>
 
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">P3</TableCell>
 											<TableCell>SRH 40</TableCell>
 											<TableCell className="text-right text-destructive">
@@ -439,7 +439,7 @@ function RouteComponent() {
 											</TableCell>
 										</TableRow>
 
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">P4</TableCell>
 											<TableCell>CSK 30</TableCell>
 											<TableCell className="text-right text-success">
@@ -450,7 +450,7 @@ function RouteComponent() {
 											</TableCell>
 										</TableRow>
 
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">P5</TableCell>
 											<TableCell>SRH 80</TableCell>
 											<TableCell className="text-right text-destructive">
@@ -461,7 +461,7 @@ function RouteComponent() {
 											</TableCell>
 										</TableRow>
 
-										<TableRow>
+										<TableRow className="text-foreground">
 											<TableCell className="font-medium">P6</TableCell>
 											<TableCell>SRH 60</TableCell>
 											<TableCell className="text-right text-destructive">
