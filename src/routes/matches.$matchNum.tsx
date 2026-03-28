@@ -17,13 +17,13 @@ export const Route = createFileRoute("/matches/$matchNum")({
 		return { loggedInUserId: userId };
 	},
 	loader: async ({ context, params }) => {
-		await context.queryClient.ensureQueryData(
+		context.queryClient.ensureQueryData(
 			matchByNumQueryOptions(params.matchNum),
 		);
-		await context.queryClient.ensureQueryData(
+		context.queryClient.ensureQueryData(
 			matchPredsQueryOptions(params.matchNum),
 		);
-		await context.queryClient.ensureQueryData(
+		context.queryClient.ensureQueryData(
 			currUserMatchPredQueryOptions(params.matchNum),
 		);
 	},

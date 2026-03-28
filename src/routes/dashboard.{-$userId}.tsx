@@ -54,8 +54,6 @@ function RouteComponent() {
 		userPredsQueryOptions(userId ?? loggedInUserId),
 	);
 
-	console.log(loggedInUserId);
-
 	return (
 		<div className="grid lg:grid-cols-8 gap-4 md:gap-8 items-start justify-start w-full p-4 md:p-8">
 			<div className="lg:col-span-4 order-1">

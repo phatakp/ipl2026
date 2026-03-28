@@ -83,7 +83,7 @@ function getResponse() {
 }
 var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 async function getStartManifest(matchedRoutes) {
-  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-BXruU3wU.mjs");
+  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-C01oEi26.mjs");
   const startManifest = tsrStartManifest();
   const rootRoute = startManifest.routes[rootRouteId] = startManifest.routes[rootRouteId] || {};
   rootRoute.assets = rootRoute.assets || [];
@@ -134,9 +134,6 @@ const manifest = { "d00cdee145bfed0516ecf734c86ce9e5be4ed2c0858d4eb37ac33b7c19ca
 }, "482a6e781ea7c881cb91b969a203494363a1060517013d2937a6355bfe4efbea": {
   functionName: "activateProfile_createServerFn_handler",
   importer: () => import("./services-RgFdoxZk.mjs")
-}, "f2bd1576844e4c5e8346f1726e3555959eaa58c3eea563f74a459484d2b293ea": {
-  functionName: "getTeams_createServerFn_handler",
-  importer: () => import("./services-BYxxJZYa.mjs")
 }, "413f8fb4fa90e7183eb37f37b22258b821a4675ea9d9b766c6244b7742d0f03b": {
   functionName: "getFixtures_createServerFn_handler",
   importer: () => import("./services-hmDh01xx.mjs")
@@ -167,6 +164,9 @@ const manifest = { "d00cdee145bfed0516ecf734c86ce9e5be4ed2c0858d4eb37ac33b7c19ca
 }, "d96734dae5d51ebd6bd9232fd5a9bf979a1eb55f4e952429e630fd1abb95bcbe": {
   functionName: "reverseBetsForMatch_createServerFn_handler",
   importer: () => import("./services-hmDh01xx.mjs")
+}, "f2bd1576844e4c5e8346f1726e3555959eaa58c3eea563f74a459484d2b293ea": {
+  functionName: "getTeams_createServerFn_handler",
+  importer: () => import("./services-BYxxJZYa.mjs")
 }, "f0288465a7086452a3cc5b3c7937287da63c714bbcc2d77605a6eb59c9f0c37b": {
   functionName: "getMatchPredictions_createServerFn_handler",
   importer: () => import("./services-BEYPozAm.mjs")
@@ -1048,7 +1048,7 @@ var entriesPromise;
 var baseManifestPromise;
 var cachedFinalManifestPromise;
 async function loadEntries() {
-  const routerEntry = await import("./router-CsWPkc_g.mjs").then((n) => n.z);
+  const routerEntry = await import("./router-CRxgMFRe.mjs").then((n) => n.z);
   return {
     startEntry: await import("./start-C_ca6vJb.mjs"),
     routerEntry

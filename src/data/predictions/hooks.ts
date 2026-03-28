@@ -10,7 +10,7 @@ export function useCreatePrediction() {
 	return useMutation({
 		mutationFn: addPrediction,
 		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: predKeys.all });
+			queryClient.invalidateQueries();
 			router.invalidate();
 			toast.success(`Prediction added successfully`);
 		},

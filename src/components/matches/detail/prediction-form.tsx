@@ -102,7 +102,8 @@ export function PredictionForm({ match }: Props) {
 					!match.hasDoubleCutoffPassed &&
 					!!pred &&
 					!pred.isDouble &&
-					pred.status === "PLACED" ? (
+					pred.status === "PLACED" &&
+					match.type === "LEAGUE" ? (
 						<Button
 							type="button"
 							variant={"success"}
