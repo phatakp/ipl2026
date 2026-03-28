@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/carousel";
 import {
 	allUsersQueryOptions,
+	currDBUserQueryOptions,
 	userFormQueryOptions,
 } from "@/data/users/query-options";
 import { cn } from "@/lib/utils";
@@ -38,6 +39,7 @@ export function PlayerStandings() {
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const navigate = useNavigate();
 
+	const { data: currUser } = useSuspenseQuery(currDBUserQueryOptions());
 	const { data: players } = useSuspenseQuery(allUsersQueryOptions);
 	const { data: form } = useQuery(
 		userFormQueryOptions(userId ?? loggedInUserId!),
@@ -72,7 +74,7 @@ export function PlayerStandings() {
 	const { isLoaded, sessionClaims } = useAuth();
 	if (!isLoaded) return <PlayerStandingsLoader />;
 
-	if (!players.length)
+	if (!players.length || !currUser?.team)
 		return (
 			<ProfileBtn
 				profile={{
