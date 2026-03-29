@@ -58,7 +58,7 @@ export function Modal({
 			<Dialog onOpenChange={setOpen} open={open}>
 				<DialogTrigger asChild={asChild}>{children}</DialogTrigger>
 				<DialogContent
-					className="w-full bg-card text-card-foreground p-0 max-w-[calc(100vw-1rem)] mr-auto z-99"
+					className="w-full bg-card text-card-foreground p-0 max-w-[calc(100vw-1rem)] mr-auto z-99 mt-16"
 					closeBtnClass={closeBtnClass}
 				>
 					<DialogHeader className={cn(headerClass)}>
