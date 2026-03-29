@@ -58,7 +58,7 @@ export function Modal({
 			<Dialog onOpenChange={setOpen} open={open}>
 				<DialogTrigger asChild={asChild}>{children}</DialogTrigger>
 				<DialogContent
-					className="w-full bg-card text-card-foreground p-0 max-w-[calc(100vw-1rem)] mr-auto z-99 my-16 h-[calc(100vh-2rem)]"
+					className="w-full bg-card text-card-foreground p-0 max-w-[calc(100vw-1rem)] mr-auto mb-auto z-99 my-16"
 					closeBtnClass={closeBtnClass}
 				>
 					<DialogHeader className={cn(headerClass)}>
@@ -69,7 +69,7 @@ export function Modal({
 							{description}
 						</DialogDescription>
 					</DialogHeader>
-					<ScrollArea className="h-full max-h-[calc(100vh-64px)] my-auto me-1">
+					<ScrollArea className="h-full max-h-[calc(100vh-120px)] my-auto me-1">
 						<div className="p-4">{content}</div>
 					</ScrollArea>
 				</DialogContent>
