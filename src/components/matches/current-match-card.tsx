@@ -117,7 +117,11 @@ export function CurrentMatchCard() {
 											</span>
 										</div>
 
-										<Button className="w-fit">Match Details</Button>
+										<Button className="w-fit">
+											{match.hasDoubleCutoffPassed
+												? "Match Details"
+												: "Predict Now"}
+										</Button>
 									</div>
 								</Link>
 							</div>

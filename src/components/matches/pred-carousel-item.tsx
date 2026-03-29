@@ -22,20 +22,21 @@ export function PredCarouselItem({ pred, isUserPred, matchWinnerAmt }: Props) {
 
 	return (
 		<Link
+			className="w-full"
 			to={"/matches/$matchNum"}
 			params={{ matchNum: pred.match?.number }}
 			disabled={!pred.match?.number || isUserPred}
 		>
 			<Card
 				className={cn(
-					"p-0 cursor-pointer transition-all duration-300 ease-in-out relative overflow-hidden md:py-2 rounded-none border-none shadow-lg",
+					"w-full p-0 cursor-pointer transition-all duration-300 ease-in-out relative overflow-hidden md:py-2 rounded-none border-none shadow-lg",
 					!!pred.match?.number &&
 						!isUserPred &&
 						"hover:scale-105 hover:bg-secondary hover:text-secondary-foreground ",
 				)}
 			>
-				<div className="flex items-center justify-between w-[calc(100%-2rem)]">
-					<div className="flex items-center gap-2 pl-4 w-full">
+				<div className="flex items-center justify-between w-[calc(100%-1rem)]">
+					<div className="flex items-center gap-2 w-full">
 						<CloudImage
 							name={`${pred.team ?? "undefined"}_team`}
 							width={60}
@@ -46,17 +47,22 @@ export function PredCarouselItem({ pred, isUserPred, matchWinnerAmt }: Props) {
 							{isUserPred ? (
 								<div className="flex flex-col">
 									<div className="flex items-center gap-2 wrap-break-word md:w-100 truncate">
-										<span className={cn(" font-sans text-lg md:text-xl")}>
+										<span
+											className={cn(" font-sans text-lg md:text-xl capitalize")}
+										>
 											{pred.user.firstName}
 										</span>
-										<span className={cn(" font-sans text-lg")}>
+										<span className={cn(" font-sans text-lg capitalize")}>
 											{pred.user.lastName}
 										</span>
 									</div>
 									{!["PLACED", "DEFAULT"].includes(pred.status) && (
-										<div className="flex items-center gap-2 text-sm ">
+										<div className="flex items-center gap-2 text-sm text-muted-foreground">
 											Points at Stake:
-											<Amount amount={pred.amount} className="text-sm" />
+											<Amount
+												amount={pred.amount}
+												className="text-sm text-foreground"
+											/>
 										</div>
 									)}
 								</div>
@@ -77,7 +83,7 @@ export function PredCarouselItem({ pred, isUserPred, matchWinnerAmt }: Props) {
 								</div>
 							)}
 
-							<div className="flex items-center gap-1 font-normal">
+							<div className="flex items-center gap-1 ">
 								<span className="text-sm text-muted-foreground">
 									{format(
 										new TZDate(`${pred.updatedAt}+05:30`, "Asia/Kolkata"),
@@ -116,7 +122,7 @@ export function PredCarouselItem({ pred, isUserPred, matchWinnerAmt }: Props) {
 					</div>
 
 					<div className="flex items-center gap-2">
-						{pred.isDouble && <Badge className="text-base">Double</Badge>}
+						{pred.isDouble && <Badge className="text-base rounded-sm">D</Badge>}
 						<div className="flex items-center">
 							<span
 								className={cn(

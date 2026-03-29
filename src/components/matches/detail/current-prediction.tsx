@@ -1,5 +1,4 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { ChevronDown } from "lucide-react";
 import {
 	Accordion,
 	AccordionContent,
@@ -27,34 +26,30 @@ export function CurrentPrediction({ match }: Props) {
 		<Accordion
 			type="single"
 			collapsible
-			defaultValue=""
+			defaultValue="1"
 			className="w-full p-0 border-none shadow-xl"
 		>
-			<AccordionItem value={"1"} className="w-full p-0 bg-primary">
-				<AccordionTrigger chevronClass="hidden">
+			<AccordionItem value={"1"} className="w-full p-0 bg-primary relative">
+				<AccordionTrigger chevronClass="text-background absolute left-1/2 bottom-4 -translate-x-1/2 translate-y-0 size-5">
 					<div className="flex flex-col w-full">
 						<div className="flex items-center justify-between w-full px-4 py-2">
 							<div className="flex flex-col">
 								<span className="title text-2xl text-primary-foreground">
 									Your Prediction
 								</span>
-								<div className="text-xl text-primary-foreground/90 flex items-center gap-2">
+								<div className="text-xl text-primary-foreground/90 flex items-center gap-2 font-semibold capitalize">
 									<span>{user?.firstName}</span>
 									<span>{user?.lastName}</span>
 								</div>
 							</div>
-							<div className="hidden md:flex">
-								<PredictionBadge match={match} pred={pred} />
-							</div>
 						</div>
-						<ChevronDown className="mx-auto text-background" />
+						<div className="px-4">
+							<PredictionBadge match={match} pred={pred} />
+						</div>
 					</div>
 				</AccordionTrigger>
 				<AccordionContent>
 					<div className="flex flex-col items-center justify-center gap-4 bg-card p-4">
-						<div className="md:hidden">
-							<PredictionBadge match={match} pred={pred} />
-						</div>
 						{!pred && match.hasEntryCutoffPassed ? null : (
 							<PredictionForm match={match} />
 						)}
@@ -74,8 +69,11 @@ function PredictionBadge({
 }) {
 	if ((!pred && match.hasEntryCutoffPassed) || pred?.status === "DEFAULT")
 		return (
-			<Badge variant={"destructive"} className="text-lg my-auto px-4 ">
-				Defaulted - {match.minStake}
+			<Badge
+				variant={"destructive"}
+				className="text-lg my-auto px-4 rounded-sm"
+			>
+				Defaulted - {match.minStake} points
 			</Badge>
 		);
 
@@ -89,10 +87,10 @@ function PredictionBadge({
 							? "destructive"
 							: "secondary"
 				}
-				className="my-auto px-4 invert md:invert-0"
+				className="my-auto px-4 rounded-sm"
 			>
 				<span className="text-lg font-bold">
-					{pred.status} - {pred.resultAmt}
+					{pred.status} - {pred.resultAmt} points
 				</span>
 			</Badge>
 		);
@@ -101,10 +99,12 @@ function PredictionBadge({
 		return (
 			<Badge
 				variant={pred.isDouble ? "success" : "secondary"}
-				className="text-lg flex items-center my-auto px-4 invert md:invert-0"
+				className="text-lg flex items-center my-auto px-4 rounded-sm"
 			>
-				<span>{pred.team} - </span>
-				<span className="font-sans text-lg font-semibold">{pred.amount}</span>
+				<span>{pred.team} for </span>
+				<span className="font-sans text-lg font-semibold">
+					{pred.amount} points
+				</span>
 				{pred.isDouble && (
 					<span className="ml-1 text-sm font-normal text-success">
 						(Double)
@@ -114,7 +114,7 @@ function PredictionBadge({
 		);
 
 	return (
-		<Badge variant={"destructive"} className="text-lg my-auto px-4">
+		<Badge variant={"destructive"} className="text-lg my-auto px-4 rounded-sm">
 			No Prediction yet!
 		</Badge>
 	);

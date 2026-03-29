@@ -22,25 +22,25 @@ export function Navbar() {
 		<header
 			className={cn(
 				"sticky inset-x-0 top-0 z-99 px-4 items-center flex transition-colors duration-400 ease-in-out h-12",
-				"bg-linear-to-br from-primary/95 via-primary/90 to-primary/80",
+				"",
 			)}
 		>
 			<nav className="flex items-center justify-between mx-auto max-w-360 w-full h-full py-4 md:py-2">
 				<Link to={"/"} className="w-20 h-full relative hidden md:flex">
 					<Logo />
 				</Link>
-				<div className="flex items-center justify-center gap-8 text-primary-foreground">
+				<div className="flex items-center justify-center gap-8 text-foreground">
 					<NavLink
 						href="/"
 						title="Home"
-						icon={<HomeIcon className="md:hidden text-primary-foreground" />}
+						icon={<HomeIcon className="md:hidden text-foreground" />}
 					/>
 					<SignedIn>
 						<NavLink
 							href="/dashboard"
 							title="Dashboard"
 							icon={
-								<LayoutDashboardIcon className="md:hidden  text-primary-foreground" />
+								<LayoutDashboardIcon className="md:hidden  text-foreground" />
 							}
 						/>
 						{isAdmin && (
@@ -48,7 +48,7 @@ export function Navbar() {
 								href="/admin"
 								title="Admin"
 								icon={
-									<UserKeyIcon className="md:hidden text-primary-foreground" />
+									<UserKeyIcon className="md:hidden text-foreground" />
 								}
 							/>
 						)}
@@ -57,7 +57,7 @@ export function Navbar() {
 						href="/rules"
 						title="Rules"
 						icon={
-							<HandshakeIcon className="md:hidden text-primary-foreground" />
+							<HandshakeIcon className="md:hidden text-foreground" />
 						}
 					/>
 				</div>
@@ -82,9 +82,9 @@ export function Navbar() {
 				</SignedIn>
 				<SignedOut>
 					<div className="flex items-center gap-4">
-						<Button size={"sm"} asChild>
-							<Link to="/sign-in/$" className="flex items-center">
-								Let&apos;s Play <ArrowRight />
+						<Button size={"sm"} variant={"ghost"} asChild className="bg-chart-1 text-card-foreground">
+							<Link to="/sign-in/$" className="flex items-center ">
+								Login <ArrowRight />
 							</Link>
 						</Button>
 					</div>
@@ -107,11 +107,11 @@ function NavLink({
 
 	return (
 		<Link to={href} className="flex flex-col items-center gap-1">
-			<span className="hidden md:flex  font-semibold">{title}</span>
+			<span className="hidden md:flex text-foreground font-semibold">{title}</span>
 			{icon}
 			<span
 				className={cn(
-					"bg-secondary h-1 w-12 transition-all duration-1000 ease-in-out",
+					"bg-secondary-foreground h-1 w-12 transition-all duration-1000 ease-in-out",
 					location.pathname === href
 						? "opacity-100 translate-x-0"
 						: "opacity-0 -translate-x-full",

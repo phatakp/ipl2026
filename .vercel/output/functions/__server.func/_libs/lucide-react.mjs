@@ -75,16 +75,21 @@ const createLucideIcon = (iconName, iconNode) => {
   Component.displayName = toPascalCase(iconName);
   return Component;
 };
-const __iconNode$j = [
+const __iconNode$k = [
   ["path", { d: "m12 19-7-7 7-7", key: "1l729n" }],
   ["path", { d: "M19 12H5", key: "x3x0zl" }]
 ];
-const ArrowLeft = createLucideIcon("arrow-left", __iconNode$j);
-const __iconNode$i = [
+const ArrowLeft = createLucideIcon("arrow-left", __iconNode$k);
+const __iconNode$j = [
   ["path", { d: "M5 12h14", key: "1ays0h" }],
   ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
 ];
-const ArrowRight = createLucideIcon("arrow-right", __iconNode$i);
+const ArrowRight = createLucideIcon("arrow-right", __iconNode$j);
+const __iconNode$i = [
+  ["path", { d: "M7 7h10v10", key: "1tivn9" }],
+  ["path", { d: "M7 17 17 7", key: "1vkiza" }]
+];
+const ArrowUpRight = createLucideIcon("arrow-up-right", __iconNode$i);
 const __iconNode$h = [
   ["path", { d: "M8 2v4", key: "1cmpym" }],
   ["path", { d: "M16 2v4", key: "4m81vk" }],
@@ -209,11 +214,12 @@ export {
   CircleArrowOutUpRight as b,
   Calendar as c,
   Pen as d,
-  ChevronRight as e,
-  Check as f,
-  Plus as g,
-  ChevronLeft as h,
-  LoaderCircle as i,
-  ChevronUp as j,
-  ArrowLeft as k
+  ArrowUpRight as e,
+  ChevronRight as f,
+  ArrowLeft as g,
+  Check as h,
+  Plus as i,
+  ChevronLeft as j,
+  LoaderCircle as k,
+  ChevronUp as l
 };

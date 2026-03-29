@@ -11,7 +11,7 @@ import { matchPredsQueryOptions } from "@/data/predictions/query-options";
 import { currDBUserQueryOptions } from "@/data/users/query-options";
 import { ADMINROLE } from "@/lib/constants";
 import type { MatchResp } from "@/types";
-import { PredCarousel } from "../prediction-carousel";
+import { PredCarousel } from "../prediction-carousel-new";
 import { AdminCard } from "./admin-card";
 import { CurrentPrediction } from "./current-prediction";
 import { MatchDateTime } from "./match-date-time";

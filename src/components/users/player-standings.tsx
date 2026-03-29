@@ -28,6 +28,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Route } from "@/routes/dashboard.{-$userId}";
 import type { Team } from "@/types";
+import { FullStandingsBtn } from "./full-standings-btn";
 import { PlayerStandingsLoader } from "./player-stadings-loader";
 import { ProfileBtn } from "./profile-btn";
 
@@ -114,7 +115,7 @@ export function PlayerStandings() {
 									</CardHeader>
 									<CardContent>
 										<div className="flex flex-col pb-20 sm:pb-0">
-											<span className="title text-3xl font-team">
+											<span className="title text-3xl font-team capitalize">
 												{user?.firstName} {user?.lastName}
 											</span>
 											{user?.clerkId &&
@@ -212,10 +213,12 @@ export function PlayerStandings() {
 									{u?.rank}
 								</span>
 
-								<span className="text-sm md:pt-2 md:text-base">
+								<span className="text-sm md:pt-2 md:text-base capitalize">
 									{u?.firstName}
 								</span>
-								<span className="text-sm md:pb-8">{u?.lastName}</span>
+								<span className="text-sm md:pb-8 capitalize">
+									{u?.lastName}
+								</span>
 								<div className="text-muted-foreground hidden lg:flex flex-col items-center text-sm md:py-1 absolute bottom-0">
 									<Amount
 										amount={u?.balance ?? 0}
@@ -235,9 +238,13 @@ export function PlayerStandings() {
 					))}
 				</CarouselContent>
 			</Carousel>
-			<span className="text-muted-foreground flex items-center gap-2">
-				Click to see player details <CircleArrowOutUpRight className="size-4" />
-			</span>
+			<div className="flex flex-col gap-4">
+				<span className="text-muted-foreground flex items-center gap-2">
+					Click to see player details{" "}
+					<CircleArrowOutUpRight className="size-4" />
+				</span>
+				<FullStandingsBtn />
+			</div>
 		</div>
 	);
 }

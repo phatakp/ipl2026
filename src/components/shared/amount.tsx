@@ -31,7 +31,7 @@ export function Amount({
 				className={cn("size-3.5 text-muted-foreground", iconClass)}
 			/> */}
 			{integerPart && decimalPart ? (
-				<div className="flex items-end">
+				<div className="flex items-center">
 					<span
 						className={cn("font-semibold text-2xl tabular-nums", className)}
 					>
@@ -39,7 +39,7 @@ export function Amount({
 					</span>
 					<span
 						className={cn(
-							"font-semibold text-lg tabular-nums text-muted-foreground",
+							"font-semibold text-lg tabular-nums text-muted-foreground pt-0.5",
 							decimalClass,
 						)}
 					>
