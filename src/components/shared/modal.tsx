@@ -69,7 +69,7 @@ export function Modal({
 							{description}
 						</DialogDescription>
 					</DialogHeader>
-					<ScrollArea className="h-full max-h-[calc(100vh-120px)] my-auto me-1">
+					<ScrollArea className="h-full max-h-[calc(100vh-10rem)] my-auto me-1">
 						<div className="p-4">{content}</div>
 					</ScrollArea>
 				</DialogContent>
