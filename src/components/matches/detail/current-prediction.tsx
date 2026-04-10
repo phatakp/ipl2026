@@ -1,4 +1,5 @@
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { Amount } from "@/components/shared/amount";
 import {
 	Accordion,
 	AccordionContent,
@@ -6,8 +7,10 @@ import {
 	AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
+import { winnerPredByNumQueryOptions } from "@/data/matches/query-options";
 import { currUserMatchPredQueryOptions } from "@/data/predictions/query-options";
 import { currDBUserQueryOptions } from "@/data/users/query-options";
+import { cn } from "@/lib/utils";
 import type { MatchResp, PredResp } from "@/types";
 import { PredictionForm } from "./prediction-form";
 
@@ -20,7 +23,12 @@ export function CurrentPrediction({ match }: Props) {
 	const { data: pred } = useSuspenseQuery(
 		currUserMatchPredQueryOptions(match.number),
 	);
+	const { data: matchWinnerAmt } = useQuery(
+		winnerPredByNumQueryOptions(match.number, true),
+	);
 	const { data: user } = useSuspenseQuery(currDBUserQueryOptions());
+	const winnerAmts =
+		matchWinnerAmt?.filter((m) => m.userId === user?.clerkId) ?? [];
 
 	return (
 		<Accordion
@@ -46,6 +54,26 @@ export function CurrentPrediction({ match }: Props) {
 						<div className="px-4">
 							<PredictionBadge match={match} pred={pred} />
 						</div>
+						{winnerAmts.length > 0 && (
+							<div className="flex flex-col mt-1">
+								{winnerAmts.map((w) => (
+									<div
+										key={w.team}
+										className="flex flex-row items-center w-fit px-4 text-background text-sm font-sans gap-2"
+									>
+										If {w.team} wins you {w.resultAmt < 0 ? "lose" : "get"}:{" "}
+										<Amount
+											amount={w.resultAmt}
+											className={cn(
+												"text-sm",
+												w.resultAmt < 0 ? "text-destructive" : "text-success",
+											)}
+											iconClass="hidden"
+										/>
+									</div>
+								))}
+							</div>
+						)}
 					</div>
 				</AccordionTrigger>
 				<AccordionContent>

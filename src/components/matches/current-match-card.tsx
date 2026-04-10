@@ -55,11 +55,7 @@ export function CurrentMatchCard() {
 					{fixtures.map((match, index) => (
 						<CarouselItem key={index}>
 							<div className="relative overflow-hidden">
-								<Link
-									to={"/matches/$matchNum"}
-									params={{ matchNum: match.number }}
-									className="shadow relative w-[calc(100vw-32px)] lg:w-full h-full md:min-h-[30vh] rounded-lg overflow-hidden p-4 pt-0 flex flex-col gap-4 bg-[url('/bg.jpg')] bg-no-repeat bg-cover"
-								>
+								<div className="shadow relative w-[calc(100vw-32px)] lg:w-full h-full md:min-h-[30vh] rounded-lg overflow-hidden p-4 pt-0 flex flex-col gap-4 bg-[url('/bg.jpg')] bg-no-repeat bg-cover">
 									<div className="bg-primary text-primary-foreground mx-auto text-sm md:text-lg px-4 rounded-b-sm flex items-center justify-center w-fit gap-2">
 										<span>
 											{match.type === "LEAGUE"
@@ -117,13 +113,20 @@ export function CurrentMatchCard() {
 											</span>
 										</div>
 
-										<Button className="w-fit">
-											{match.hasDoubleCutoffPassed
-												? "Match Details"
-												: "Predict Now"}
-										</Button>
+										<div className="flex items-center gap-4">
+											<Button className="w-fit" asChild>
+												<Link
+													to={"/matches/$matchNum"}
+													params={{ matchNum: match.number }}
+												>
+													{match.hasDoubleCutoffPassed
+														? "Match Details"
+														: "Predict Now"}
+												</Link>
+											</Button>
+										</div>
 									</div>
-								</Link>
+								</div>
 							</div>
 						</CarouselItem>
 					))}

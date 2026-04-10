@@ -41,7 +41,7 @@ export const Route = createFileRoute("/dashboard/{-$userId}")({
 		);
 		if (params.userId)
 			context.queryClient.ensureQueryData(dBUserQueryOptions(params.userId));
-		else await context.queryClient.ensureQueryData(currDBUserQueryOptions());
+		else context.queryClient.ensureQueryData(currDBUserQueryOptions());
 	},
 	component: RouteComponent,
 });
@@ -61,7 +61,7 @@ function RouteComponent() {
 					<PlayerStandings />
 				</Suspense>
 			</div>
-			<div className="lg:col-span-4 order-2 lg:order-3">
+			<div className="lg:col-span-4 order-3">
 				<Suspense fallback={<PredCarouselLoader />}>
 					<PredCarousel
 						match={{} as MatchResp}
@@ -70,7 +70,7 @@ function RouteComponent() {
 					/>
 				</Suspense>
 			</div>
-			<div className="lg:col-span-4 order-3 lg:order-2">
+			<div className="lg:col-span-4 order-2">
 				<Suspense fallback={<CurrentMatchLoader />}>
 					<CurrentMatchCard />
 				</Suspense>

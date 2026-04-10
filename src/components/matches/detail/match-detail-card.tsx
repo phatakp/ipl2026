@@ -1,5 +1,7 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
+import { Link } from "@tanstack/react-router";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
 	Card,
 	CardContent,
@@ -38,8 +40,8 @@ export function MatchDetailCard({ matchNum }: Props) {
 
 	return (
 		<div className="flex flex-col w-[calc(100vw-16px)] md:w-full md:min-w-200 xl:min-w-300 mt-8">
-			<Card className="relative p-0 border-none">
-				<CardHeader className="relative overflow-hidden flex flex-col gap-4 p-0 rounded-t-sm bg-[url('/bg.jpg')] bg-no-repeat bg-cover">
+			<Card className="relative p-0 border-none ">
+				<CardHeader className="relative flex flex-col gap-4 p-0 overflow-hidden rounded-t-sm bg-[url('/bg.jpg')] bg-no-repeat bg-cover">
 					<MatchVenue match={match} />
 					<MatchDateTime match={match} />
 
@@ -51,6 +53,34 @@ export function MatchDetailCard({ matchNum }: Props) {
 				</CardHeader>
 				<CardContent className="p-0">
 					<div className="flex flex-col -mt-6">
+						<div className="flex items-center justify-center gap-8 w-full p-2 bg-primary">
+							<Button
+								className="bg-card  invert"
+								disabled={matchNum === 1}
+								asChild
+							>
+								<Link
+									to="/matches/$matchNum"
+									params={{ matchNum: matchNum - 1 }}
+								>
+									Prev Match
+								</Link>
+							</Button>
+
+							<Button
+								className="bg-card  invert"
+								disabled={matchNum === 74}
+								asChild
+							>
+								<Link
+									to="/matches/$matchNum"
+									params={{ matchNum: matchNum + 1 }}
+								>
+									Next Match
+								</Link>
+							</Button>
+						</div>
+
 						{match.hasStarted && <MatchScore match={match} />}
 
 						{match.status === "COMPLETED" && (
@@ -74,8 +104,9 @@ export function MatchDetailCard({ matchNum }: Props) {
 						</div>
 					</div>
 				</CardContent>
-				{currentUser && (
-					<CardFooter className="p-0 border-none">
+
+				<CardFooter className="p-0 border-none flex flex-col">
+					{currentUser && (
 						<Card className="rounded-none w-full p-0">
 							<CardContent className="flex flex-col items-center gap-4 p-0">
 								{isAdmin && <AdminCard match={match} />}
@@ -91,8 +122,8 @@ export function MatchDetailCard({ matchNum }: Props) {
 								/>
 							</CardContent>
 						</Card>
-					</CardFooter>
-				)}
+					)}
+				</CardFooter>
 			</Card>
 		</div>
 	);

@@ -105,7 +105,7 @@ export function PredCarouselItem({ pred, isUserPred, matchWinnerAmt }: Props) {
 											key={w.team}
 											className="flex flex-row items-center w-fit title text-sm font-sans gap-2"
 										>
-											If {w.team} wins:{" "}
+											If {w.team} wins you {w.resultAmt < 0 ? "lose" : "get"}:{" "}
 											<Amount
 												amount={w.resultAmt}
 												className={cn(
