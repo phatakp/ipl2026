@@ -12,6 +12,7 @@ import { matchByNumQueryOptions } from "@/data/matches/query-options";
 import { matchPredsQueryOptions } from "@/data/predictions/query-options";
 import { currDBUserQueryOptions } from "@/data/users/query-options";
 import { ADMINROLE } from "@/lib/constants";
+import { Route } from "@/routes/matches.$matchNum";
 import type { MatchResp } from "@/types";
 import { PredCarousel } from "../prediction-carousel-new";
 import { AdminCard } from "./admin-card";
@@ -22,11 +23,8 @@ import { MatchVenue } from "./match-venue";
 import { PredictionChart } from "./prediction-chart";
 import { TeamPlayer } from "./team-player";
 
-type Props = {
-	matchNum: number;
-};
-
-export function MatchDetailCard({ matchNum }: Props) {
+export function MatchDetailCard() {
+	const { matchNum } = Route.useParams();
 	const { data: match } = useSuspenseQuery(matchByNumQueryOptions(matchNum));
 	const { data: matchPreds } = useSuspenseQuery(
 		matchPredsQueryOptions(matchNum),
@@ -110,9 +108,7 @@ export function MatchDetailCard({ matchNum }: Props) {
 						<Card className="rounded-none w-full p-0">
 							<CardContent className="flex flex-col items-center gap-4 p-0">
 								{isAdmin && <AdminCard match={match} />}
-								{!match.hasDoubleCutoffPassed && (
-									<CurrentPrediction match={match} />
-								)}
+								{!match.hasDoubleCutoffPassed && <CurrentPrediction />}
 								<PredCarousel
 									match={match}
 									preds={match.hasDoubleCutoffPassed ? matchPreds : otherPreds}

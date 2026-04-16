@@ -31,12 +31,11 @@ export const Route = createFileRoute("/matches/$matchNum")({
 });
 
 function RouteComponent() {
-	const { matchNum } = Route.useParams();
 	return (
 		<div className="flex items-start justify-center w-full">
 			<div className="max-w-360">
 				<Suspense fallback={<div>Loading Current Match...</div>}>
-					<MatchDetailCard matchNum={matchNum} />
+					<MatchDetailCard />
 				</Suspense>
 			</div>
 		</div>

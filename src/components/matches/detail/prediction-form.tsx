@@ -3,6 +3,7 @@ import { useAppForm } from "@/components/form/hooks";
 import { CloudImage } from "@/components/shared/cloud-img";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { matchByNumQueryOptions } from "@/data/matches/query-options";
 import {
 	useCreatePrediction,
 	useDoublePrediction,
@@ -11,18 +12,17 @@ import {
 import { currUserMatchPredQueryOptions } from "@/data/predictions/query-options";
 import { currDBUserQueryOptions } from "@/data/users/query-options";
 import { cn } from "@/lib/utils";
+import { Route } from "@/routes/matches.$matchNum";
 import { PredictionSchemaWithValidation } from "@/schemas";
 import type { MatchResp, Team } from "@/types";
 
-type Props = {
-	match: MatchResp;
-};
-
-export function PredictionForm({ match }: Props) {
+export function PredictionForm() {
+	const { matchNum } = Route.useParams();
 	const { data: pred } = useSuspenseQuery(
-		currUserMatchPredQueryOptions(match.number),
+		currUserMatchPredQueryOptions(matchNum),
 	);
 	const { data: user } = useSuspenseQuery(currDBUserQueryOptions());
+	const { data: match } = useSuspenseQuery(matchByNumQueryOptions(matchNum));
 	const { mutate: addPrediction } = useCreatePrediction();
 	const { mutate: updatePrediction } = useUpdatePrediction();
 	const { mutate: doublePrediction } = useDoublePrediction();
@@ -30,7 +30,7 @@ export function PredictionForm({ match }: Props) {
 	const form = useAppForm({
 		defaultValues: {
 			id: pred?.id,
-			matchNumber: match.number,
+			matchNumber: matchNum,
 			team: pred?.team,
 			amount: pred?.amount ?? match.minStake,
 			isDouble: !!pred?.isDouble,
@@ -41,6 +41,7 @@ export function PredictionForm({ match }: Props) {
 		onSubmit: async ({ value }) => {
 			if (pred?.id) updatePrediction({ data: value });
 			else addPrediction({ data: value });
+			form.reset();
 		},
 	});
 	return (

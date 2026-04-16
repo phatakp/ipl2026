@@ -13,7 +13,7 @@ export const ProfileSchema = z4.object({
 	lastName: z4.string({ error: "Last Name is required" }),
 	team: z4.enum(TEAMNAMES, { error: "IPL Winner is required" }).optional(),
 	doublesLeft: z4.number().min(0),
-	balance: z4.number().min(0),
+	balance: z4.number(),
 	imageUrl: z4.string().optional(),
 	role: z4.enum(["PLAYER", "ADMIN"]),
 	isActive: z4.boolean(),

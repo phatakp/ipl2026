@@ -7,25 +7,30 @@ import {
 	AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
-import { winnerPredByNumQueryOptions } from "@/data/matches/query-options";
+import {
+	matchByNumQueryOptions,
+	winnerPredByNumQueryOptions,
+} from "@/data/matches/query-options";
 import { currUserMatchPredQueryOptions } from "@/data/predictions/query-options";
 import { currDBUserQueryOptions } from "@/data/users/query-options";
 import { cn } from "@/lib/utils";
+import { Route } from "@/routes/matches.$matchNum";
 import type { MatchResp, PredResp } from "@/types";
 import { PredictionForm } from "./prediction-form";
 
 type Props = {
-	match: MatchResp;
 	className?: string;
 };
 
-export function CurrentPrediction({ match }: Props) {
+export function CurrentPrediction({ className }: Props) {
+	const { matchNum } = Route.useParams();
 	const { data: pred } = useSuspenseQuery(
-		currUserMatchPredQueryOptions(match.number),
+		currUserMatchPredQueryOptions(matchNum),
 	);
 	const { data: matchWinnerAmt } = useQuery(
-		winnerPredByNumQueryOptions(match.number, true),
+		winnerPredByNumQueryOptions(matchNum, true),
 	);
+	const { data: match } = useSuspenseQuery(matchByNumQueryOptions(matchNum));
 	const { data: user } = useSuspenseQuery(currDBUserQueryOptions());
 	const winnerAmts =
 		matchWinnerAmt?.filter((m) => m.userId === user?.clerkId) ?? [];
@@ -78,9 +83,7 @@ export function CurrentPrediction({ match }: Props) {
 				</AccordionTrigger>
 				<AccordionContent>
 					<div className="flex flex-col items-center justify-center gap-4 bg-card p-4">
-						{!pred && match.hasEntryCutoffPassed ? null : (
-							<PredictionForm match={match} />
-						)}
+						{!pred && match.hasEntryCutoffPassed ? null : <PredictionForm />}
 					</div>
 				</AccordionContent>
 			</AccordionItem>

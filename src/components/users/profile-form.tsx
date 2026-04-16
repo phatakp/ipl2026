@@ -39,6 +39,7 @@ export function ProfileForm({ profile }: Props) {
 			mutate({ data: value });
 		},
 	});
+
 	return (
 		<form
 			className="flex flex-col gap-7"
